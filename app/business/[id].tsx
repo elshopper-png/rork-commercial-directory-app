@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, ScrollView, Image, TouchableOpacity, Linking, Modal } from 'react-native';
 import { Stack, useLocalSearchParams } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Star, MapPin, Phone, Clock, Heart, Share2, ChevronDown, ChevronUp } from 'lucide-react-native';
+import { Star, MapPin, Phone, Clock, Heart, Share2, ChevronDown, ChevronUp, Facebook, Instagram } from 'lucide-react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Video, ResizeMode } from 'expo-av';
 
@@ -195,24 +195,22 @@ export default function BusinessScreen() {
                     <Text style={styles.sectionTitle}>Síguenos en redes</Text>
                     <View style={styles.socialButtons}>
                       <TouchableOpacity 
-                        style={styles.socialButton}
+                        style={[styles.socialButton, styles.facebookButton]}
                         onPress={() => handleSocialMedia('facebook')}
+                        activeOpacity={0.7}
                       >
-                        <Image 
-                          source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/2023_Facebook_icon.svg/2048px-2023_Facebook_icon.svg.png' }}
-                          style={styles.socialIcon}
-                        />
+                        <Facebook size={40} color="#1877F2" fill="#1877F2" />
                         <Text style={styles.socialText}>Facebook</Text>
                         <Text style={styles.socialHandle}>Renova Plus</Text>
                       </TouchableOpacity>
                       <TouchableOpacity 
-                        style={styles.socialButton}
+                        style={[styles.socialButton, styles.instagramButton]}
                         onPress={() => handleSocialMedia('instagram')}
+                        activeOpacity={0.7}
                       >
-                        <Image 
-                          source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png' }}
-                          style={styles.socialIcon}
-                        />
+                        <View style={styles.instagramIconContainer}>
+                          <Instagram size={40} color="#E4405F" />
+                        </View>
                         <Text style={styles.socialText}>Instagram</Text>
                         <Text style={styles.socialHandle}>@renovaconjuan</Text>
                       </TouchableOpacity>
@@ -618,11 +616,16 @@ const styles = StyleSheet.create({
     color: '#000',
     fontWeight: 'bold',
   },
-  socialIcon: {
-    width: 48,
-    height: 48,
+  instagramIconContainer: {
     marginBottom: 8,
-    resizeMode: 'contain',
+  },
+  facebookButton: {
+    borderColor: '#1877F2',
+    borderWidth: 2,
+  },
+  instagramButton: {
+    borderColor: '#E4405F',
+    borderWidth: 2,
   },
   ctaSection: {
     marginBottom: 24,
@@ -655,12 +658,18 @@ const styles = StyleSheet.create({
   },
   socialButton: {
     flex: 1,
-    backgroundColor: '#f8f9fa',
+    backgroundColor: 'white',
     borderRadius: 12,
     padding: 16,
     alignItems: 'center',
-    borderWidth: 1,
-    borderColor: '#e0e0e0',
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
   },
 
   socialText: {
