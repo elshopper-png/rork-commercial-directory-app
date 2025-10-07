@@ -22,6 +22,7 @@ export default function BusinessScreen() {
   const [isVideoFullscreen, setIsVideoFullscreen] = useState<boolean>(false);
   const isRenovaPlus = params.id === '18';
   const isMedicinaRegenerativa = params.id === '12';
+  const isGasLaBala = params.id === '19';
   const videoRef = React.useRef<Video>(null);
 
   const handleCall = () => {
@@ -34,6 +35,8 @@ export default function BusinessScreen() {
     if (params.phone) {
       const message = isMedicinaRegenerativa 
         ? encodeURIComponent('Hola, quiero solicitar una cita')
+        : isGasLaBala
+        ? encodeURIComponent('Hola, quiero hacer un pedido de gas')
         : encodeURIComponent('Hola, quiero información sobre Renova Plus');
       Linking.openURL(`https://wa.me/${params.phone.replace(/[^0-9]/g, '')}?text=${message}`);
     }
@@ -78,7 +81,7 @@ export default function BusinessScreen() {
       <Stack.Screen 
         options={{ 
           title: params.name || 'Negocio',
-          headerStyle: { backgroundColor: isMedicinaRegenerativa ? '#E91E63' : '#667eea' },
+          headerStyle: { backgroundColor: isMedicinaRegenerativa ? '#E91E63' : isGasLaBala ? '#FF6B35' : '#667eea' },
           headerTintColor: 'white',
           headerTitleStyle: { fontWeight: 'bold' },
           headerRight: () => (
@@ -109,6 +112,8 @@ export default function BusinessScreen() {
               <Text style={styles.medicinaName}>CENTRO DE MEDICINA{"\n"}REGENERATIVA Y ESTÉTICA INTEGRAL</Text>
             </View>
           </View>
+        ) : isGasLaBala ? (
+          <Image source={{ uri: params.image }} style={styles.gasHeroImage} />
         ) : (
           <Image source={{ uri: params.image }} style={styles.heroImage} />
         )}
@@ -332,25 +337,111 @@ export default function BusinessScreen() {
                         onPress={() => handleSocialMedia('facebook')}
                         activeOpacity={0.7}
                       >
-                        <Facebook size={40} color="#1877F2" fill="#1877F2" />
-                        <Text style={styles.socialText}>Facebook</Text>
-                        <Text style={styles.socialHandle}>Renova Plus</Text>
+                        <Facebook size={48} color="#1877F2" fill="#1877F2" />
                       </TouchableOpacity>
                       <TouchableOpacity 
                         style={[styles.socialButton, styles.instagramButton]}
                         onPress={() => handleSocialMedia('instagram')}
                         activeOpacity={0.7}
                       >
-                        <View style={styles.instagramIconContainer}>
-                          <Instagram size={40} color="#E4405F" />
-                        </View>
-                        <Text style={styles.socialText}>Instagram</Text>
-                        <Text style={styles.socialHandle}>@renovaconjuan</Text>
+                        <Instagram size={48} color="#E4405F" />
                       </TouchableOpacity>
                     </View>
                   </View>
                 </View>
               )}
+            </>
+          ) : isGasLaBala ? (
+            <>
+              <View style={styles.gasContent}>
+                <View style={styles.gasLogosSection}>
+                  <View style={styles.gasLogosRow}>
+                    <Image 
+                      source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/kbx3d0iw1pxj7cwm2d7db' }} 
+                      style={styles.gasLogo}
+                      resizeMode="contain"
+                    />
+                    <Image 
+                      source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/d8coubsomy0rbiv84qfw2' }} 
+                      style={styles.gasLogo}
+                      resizeMode="contain"
+                    />
+                    <Image 
+                      source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/6nkg3m5qdbkbh8sdy0xdd' }} 
+                      style={styles.gasLogo}
+                      resizeMode="contain"
+                    />
+                  </View>
+                </View>
+
+                <View style={styles.gasAuthSection}>
+                  <Text style={styles.gasAuthText}>Autorizado por</Text>
+                  <Image 
+                    source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/rxurd7a4tbw4uzfjs6lq7' }} 
+                    style={styles.osinergminLogo}
+                    resizeMode="contain"
+                  />
+                </View>
+
+                <View style={styles.gasInfoCard}>
+                  <Text style={styles.gasInfoTitle}>⏰ Horario de atención:</Text>
+                  <Text style={styles.gasInfoText}>Lunes a domingo (incluido feriados){"\n"}de 6:30 am. a 10 pm.</Text>
+                </View>
+
+                <View style={styles.gasInfoCard}>
+                  <Text style={styles.gasInfoTitle}>🔧 Venta de balones vacíos y válvulas</Text>
+                  <Image 
+                    source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/dbwyvdw6e12hjiq20uu2l' }} 
+                    style={styles.valvulaImage}
+                    resizeMode="contain"
+                  />
+                </View>
+
+                <View style={styles.gasPaymentSection}>
+                  <Text style={styles.gasPaymentTitle}>Aceptamos:</Text>
+                  <View style={styles.paymentLogosRow}>
+                    <Image 
+                      source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/t0fwsj17q51ie1s229y51' }} 
+                      style={styles.paymentLogo}
+                      resizeMode="contain"
+                    />
+                    <Image 
+                      source={{ uri: 'https://images.unsplash.com/photo-1614680376593-902f74cf0d41?w=200&h=200&fit=crop' }} 
+                      style={styles.paymentLogo}
+                      resizeMode="contain"
+                    />
+                  </View>
+                </View>
+
+                <View style={styles.gasContactSection}>
+                  <Text style={styles.gasContactTitle}>📞 Pedidos y Contacto</Text>
+                  <TouchableOpacity style={styles.gasWhatsappButton} onPress={handleWhatsApp}>
+                    <LinearGradient
+                      colors={['#25D366', '#128C7E']}
+                      style={styles.buttonGradient}
+                    >
+                      <Text style={styles.whatsappIcon}>💬</Text>
+                      <Text style={styles.buttonText}>WhatsApp: {params.phone}</Text>
+                    </LinearGradient>
+                  </TouchableOpacity>
+                  
+                  <TouchableOpacity style={styles.gasPhoneButton} onPress={handleCall}>
+                    <Phone size={24} color="#FF6B35" />
+                    <Text style={styles.gasPhoneText}>Teléfono: {params.phone}</Text>
+                  </TouchableOpacity>
+                </View>
+
+                <View style={styles.gasDeliverySection}>
+                  <Image 
+                    source={{ uri: 'https://images.unsplash.com/photo-1526367790999-0150786686a2?w=600&h=300&fit=crop' }} 
+                    style={styles.deliveryImage}
+                    resizeMode="cover"
+                  />
+                  <View style={styles.deliveryOverlay}>
+                    <Text style={styles.deliveryText}>DELIVERY GRATIS</Text>
+                  </View>
+                </View>
+              </View>
             </>
           ) : (
             <>
@@ -1048,14 +1139,17 @@ const styles = StyleSheet.create({
   },
   socialButtons: {
     flexDirection: 'row',
-    gap: 12,
+    gap: 16,
+    justifyContent: 'center',
   },
   socialButton: {
-    flex: 1,
     backgroundColor: 'white',
-    borderRadius: 12,
-    padding: 16,
+    borderRadius: 16,
+    padding: 20,
     alignItems: 'center',
+    justifyContent: 'center',
+    width: 88,
+    height: 88,
     elevation: 2,
     shadowColor: '#000',
     shadowOffset: {
@@ -1065,17 +1159,180 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 4,
   },
-  socialText: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#2c3e50',
-    marginBottom: 4,
-  },
-  socialHandle: {
-    fontSize: 14,
-    color: '#7f8c8d',
-  },
   whatsappIcon: {
     fontSize: 20,
+  },
+  gasHeroImage: {
+    width: '100%',
+    height: 200,
+    resizeMode: 'contain',
+    backgroundColor: 'white',
+  },
+  gasContent: {
+    backgroundColor: 'white',
+    borderRadius: 16,
+    padding: 20,
+    marginBottom: 16,
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+  },
+  gasLogosSection: {
+    marginBottom: 24,
+    paddingVertical: 16,
+    borderBottomWidth: 2,
+    borderBottomColor: '#f0f0f0',
+  },
+  gasLogosRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    gap: 16,
+  },
+  gasLogo: {
+    width: 100,
+    height: 80,
+  },
+  gasAuthSection: {
+    alignItems: 'center',
+    marginBottom: 24,
+    paddingVertical: 16,
+    backgroundColor: '#f8f9fa',
+    borderRadius: 12,
+  },
+  gasAuthText: {
+    fontSize: 16,
+    fontWeight: '600' as const,
+    color: '#2c3e50',
+    marginBottom: 12,
+  },
+  osinergminLogo: {
+    width: 150,
+    height: 60,
+  },
+  gasInfoCard: {
+    backgroundColor: '#FFF3E0',
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 16,
+    borderWidth: 2,
+    borderColor: '#FF6B35',
+  },
+  gasInfoTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#FF6B35',
+    marginBottom: 8,
+  },
+  gasInfoText: {
+    fontSize: 16,
+    color: '#2c3e50',
+    lineHeight: 24,
+  },
+  valvulaImage: {
+    width: '100%',
+    height: 150,
+    marginTop: 12,
+  },
+  gasPaymentSection: {
+    backgroundColor: '#E3F2FD',
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 16,
+    alignItems: 'center',
+  },
+  gasPaymentTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#1976D2',
+    marginBottom: 12,
+  },
+  paymentLogosRow: {
+    flexDirection: 'row',
+    gap: 24,
+    alignItems: 'center',
+  },
+  paymentLogo: {
+    width: 80,
+    height: 80,
+  },
+  gasContactSection: {
+    marginBottom: 16,
+  },
+  gasContactTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#2c3e50',
+    marginBottom: 16,
+    textAlign: 'center',
+  },
+  gasWhatsappButton: {
+    borderRadius: 12,
+    overflow: 'hidden',
+    marginBottom: 12,
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+  },
+  gasPhoneButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 16,
+    backgroundColor: 'white',
+    borderRadius: 12,
+    borderWidth: 2,
+    borderColor: '#FF6B35',
+    gap: 8,
+  },
+  gasPhoneText: {
+    fontSize: 16,
+    fontWeight: '600' as const,
+    color: '#FF6B35',
+  },
+  gasDeliverySection: {
+    position: 'relative',
+    borderRadius: 16,
+    overflow: 'hidden',
+    marginTop: 8,
+    elevation: 4,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 8,
+  },
+  deliveryImage: {
+    width: '100%',
+    height: 150,
+  },
+  deliveryOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(255, 107, 53, 0.9)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  deliveryText: {
+    fontSize: 32,
+    fontWeight: 'bold',
+    color: 'white',
+    textAlign: 'center',
+    letterSpacing: 2,
+    textShadowColor: 'rgba(0, 0, 0, 0.3)',
+    textShadowOffset: { width: 2, height: 2 },
+    textShadowRadius: 4,
   },
 });

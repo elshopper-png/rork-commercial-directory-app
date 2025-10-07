@@ -71,6 +71,16 @@ const mockBusinesses: Record<string, Business[]> = {
       phone: '987-901-234',
       hours: 'Lun-Sáb: 8:00 AM - 6:00 PM',
       image: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&h=300&fit=crop'
+    },
+    {
+      id: '19',
+      name: 'Gas La Bala',
+      description: 'Venta de gas Lima Gas, Solgas y Rinde Gas. Balones vacíos y válvulas. Delivery gratis.',
+      rating: 4.9,
+      address: 'Los Olivos',
+      phone: '942604451',
+      hours: 'Lunes a domingo (incluido feriados) de 6:30 am. a 10 pm.',
+      image: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/p52sxq4ywnx9488hnyyda'
     }
   ],
   'technical-service': [
