@@ -146,13 +146,13 @@ const mockBusinesses: Record<string, Business[]> = {
   beauty: [
     {
       id: '12',
-      name: 'Spa & Belleza Glamour',
-      description: 'Tratamientos faciales, masajes y manicure',
-      rating: 4.9,
-      address: 'Av. Naranjal 1234, Los Olivos',
-      phone: '987-123-890',
-      hours: 'Lun-Sáb: 10:00 AM - 8:00 PM',
-      image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&h=300&fit=crop'
+      name: 'CENTRO DE MEDICINA REGENERATIVA Y ESTÉTICA INTEGRAL',
+      description: 'Tratamiento con Plasma Rico en Plaquetas PRP (Células Madre)',
+      rating: 5.0,
+      address: 'Av. Antúnez de Mayolo 848 - 3er. piso, Urb. Mercurio',
+      phone: '991405449',
+      hours: 'Lunes a sábado previa cita',
+      image: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/q1pzc9tmi5kqigsz1s4ow'
     }
   ],
   jobs: [

@@ -21,6 +21,7 @@ export default function BusinessScreen() {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const [isVideoFullscreen, setIsVideoFullscreen] = useState<boolean>(false);
   const isRenovaPlus = params.id === '18';
+  const isMedicinaRegenerativa = params.id === '12';
   const videoRef = React.useRef<Video>(null);
 
   const handleCall = () => {
@@ -31,7 +32,9 @@ export default function BusinessScreen() {
 
   const handleWhatsApp = () => {
     if (params.phone) {
-      const message = encodeURIComponent('Hola, quiero información sobre Renova Plus');
+      const message = isMedicinaRegenerativa 
+        ? encodeURIComponent('Hola, quiero solicitar una cita')
+        : encodeURIComponent('Hola, quiero información sobre Renova Plus');
       Linking.openURL(`https://wa.me/${params.phone.replace(/[^0-9]/g, '')}?text=${message}`);
     }
   };
@@ -48,7 +51,9 @@ export default function BusinessScreen() {
   };
 
   const handleDirections = () => {
-    if (params.address) {
+    if (isMedicinaRegenerativa) {
+      Linking.openURL('https://www.google.com/maps/place/Av.+Santiago+Antunez+de+Mayolo+848,+Los+Olivos+15301/@-11.9924519,-77.0719698,17.25z/data=!4m6!3m5!1s0x9105ce5963606bd1:0x44f4712ae588f03c!8m2!3d-11.9926661!4d-77.0716667!16s%2Fg%2F11q2ng_sww?entry=ttu&g_ep=EgoyMDI1MTAwNC4wIKXMDSoASAFQAw%3D%3D');
+    } else if (params.address) {
       const encodedAddress = encodeURIComponent(params.address);
       Linking.openURL(`https://maps.google.com/?q=${encodedAddress}`);
     }
@@ -64,12 +69,16 @@ export default function BusinessScreen() {
     }
   };
 
+  const handleEmail = () => {
+    Linking.openURL('mailto:mashaburga@yahoo.com');
+  };
+
   return (
     <SafeAreaView style={styles.container} edges={['top', 'left', 'right']}>
       <Stack.Screen 
         options={{ 
           title: params.name || 'Negocio',
-          headerStyle: { backgroundColor: '#667eea' },
+          headerStyle: { backgroundColor: isMedicinaRegenerativa ? '#E91E63' : '#667eea' },
           headerTintColor: 'white',
           headerTitleStyle: { fontWeight: 'bold' },
           headerRight: () => (
@@ -93,12 +102,154 @@ export default function BusinessScreen() {
               <Text style={styles.storeName}>TIENDA RENOVA PLUS</Text>
             </View>
           </View>
+        ) : isMedicinaRegenerativa ? (
+          <View>
+            <Image source={{ uri: params.image }} style={styles.heroImage} />
+            <View style={styles.medicinaNameOverlay}>
+              <Text style={styles.medicinaName}>CENTRO DE MEDICINA{"\n"}REGENERATIVA Y ESTÉTICA INTEGRAL</Text>
+            </View>
+          </View>
         ) : (
           <Image source={{ uri: params.image }} style={styles.heroImage} />
         )}
         
         <View style={styles.content}>
-          {isRenovaPlus ? (
+          {isMedicinaRegenerativa ? (
+            <>
+              <View style={styles.medicinaHeader}>
+                <Text style={styles.medicinaSubtitle}>Tratamiento con Plasma Rico en Plaquetas PRP (Células Madre)</Text>
+                <Text style={styles.medicinaSubtitle2}>APLICACIÓN DE BOTOX - MAQUILLAJE PERMANENTE - OZONOTERAPIA</Text>
+              </View>
+
+              <View style={styles.medicinaContent}>
+                <Text style={styles.medicinaQuestion}>🤔 ¿Vives con dolor?</Text>
+                <Text style={styles.medicinaText}>Recupera tu movilidad y calidad de vida.</Text>
+                
+                <Text style={styles.medicinaSectionTitle}>Tratamos eficazmente afecciones como:</Text>
+                <View style={styles.medicinaList}>
+                  <Text style={styles.medicinaListItem}>• Artritis y Artrosis</Text>
+                  <Text style={styles.medicinaListItem}>• Lesiones Deportivas</Text>
+                  <Text style={styles.medicinaListItem}>• Tendinitis y Lumbalgia</Text>
+                  <Text style={styles.medicinaListItem}>• Síndrome de Hombro Doloroso</Text>
+                  <Text style={styles.medicinaListItem}>• Dolor de Columna</Text>
+                </View>
+
+                <View style={styles.medicinaSolution}>
+                  <Text style={styles.medicinaSolutionTitle}>💉 La solución: Terapia con Plasma Rico en Plaquetas (PRP)</Text>
+                  <Text style={styles.medicinaText}>Un tratamiento regenerativo y natural que utiliza tu propio plasma para estimular la curación de:</Text>
+                  <View style={styles.medicinaList}>
+                    <Text style={styles.medicinaListItem}>• Cartílagos</Text>
+                    <Text style={styles.medicinaListItem}>• Huesos</Text>
+                    <Text style={styles.medicinaListItem}>• Ligamentos y tendones</Text>
+                  </View>
+                </View>
+
+                <View style={styles.medicinaEstheticSection}>
+                  <Text style={styles.medicinaEstheticTitle}>✨ Además, es la elección perfecta para la Medicina Estética:</Text>
+                  <View style={styles.medicinaList}>
+                    <Text style={styles.medicinaListItem}>• Rejuvenecimiento Facial</Text>
+                    <Text style={styles.medicinaListItem}>• Tratamiento del Acné</Text>
+                    <Text style={styles.medicinaListItem}>• Combate la Calvicie</Text>
+                  </View>
+                  <Text style={styles.medicinaTagline}>💖 Una solución avanzada. Un futuro sin dolor.</Text>
+                </View>
+
+                <View style={styles.doctorCard}>
+                  <Image 
+                    source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/0smjbq9dpor1bved8bzdr' }} 
+                    style={styles.doctorImage}
+                  />
+                  <View style={styles.doctorInfo}>
+                    <Text style={styles.doctorName}>DRA. MARÍA DEL SOCORRO BURGA DIOS</Text>
+                    <Text style={styles.doctorTitle}>Médico Cirujano - Especialista en{"\n"}Medicina Regenerativa y Estética Integral</Text>
+                    <Text style={styles.doctorSchedule}>📅 Atención: lunes a sábado previa cita</Text>
+                    <Text style={styles.doctorConsulta}>🎉 CONSULTA GRATIS</Text>
+                  </View>
+                </View>
+
+                <View style={styles.offerCard}>
+                  <Image 
+                    source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/wfa59m8d3l10vhhqfd95w' }} 
+                    style={styles.offerImage}
+                  />
+                  <View style={styles.offerContent}>
+                    <Text style={styles.offerTitle}>Rejuvenecimiento Full Face</Text>
+                    <Text style={styles.offerSubtitle}>¡Aprovecha nuestra Oferta:</Text>
+                    <Text style={styles.offerPrice}>S/ 999.00</Text>
+                  </View>
+                </View>
+
+                <View style={styles.gallerySection}>
+                  <Text style={styles.sectionTitle}>Galería de Tratamientos</Text>
+                  <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.gallery}>
+                    <Image 
+                      source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/s8nkfzakgp8f4kvugkzd1' }} 
+                      style={styles.galleryImage} 
+                    />
+                    <Image 
+                      source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/zmkrnd2spnvs7yb02hbow' }} 
+                      style={styles.galleryImage} 
+                    />
+                    <Image 
+                      source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/ptp2wa7t1a3i2vy00ab4h' }} 
+                      style={styles.galleryImage} 
+                    />
+                  </ScrollView>
+                </View>
+
+                <View style={styles.contactSection}>
+                  <Text style={styles.sectionTitle}>📍 Ubicación y Contacto</Text>
+                  <Text style={styles.addressText}>Av. Antúnez de Mayolo 848 - 3er. piso, Urb. Mercurio{"\n"}(costado de la Municipalidad de Los Olivos)</Text>
+                  
+                  <View style={styles.contactButtons}>
+                    <TouchableOpacity style={styles.contactButton} onPress={handleDirections}>
+                      <MapPin size={24} color="#E91E63" />
+                      <Text style={styles.contactButtonText}>Ver en Google Maps</Text>
+                    </TouchableOpacity>
+                    
+                    <TouchableOpacity style={styles.contactButton} onPress={handleEmail}>
+                      <Text style={styles.emailIcon}>📧</Text>
+                      <Text style={styles.contactButtonText}>mashaburga@yahoo.com</Text>
+                    </TouchableOpacity>
+                    
+                    <TouchableOpacity style={styles.whatsappButtonMedicina} onPress={handleWhatsApp}>
+                      <LinearGradient
+                        colors={['#25D366', '#128C7E']}
+                        style={styles.buttonGradient}
+                      >
+                        <Phone size={20} color="white" />
+                        <Text style={styles.buttonText}>Solicitar Cita por WhatsApp</Text>
+                      </LinearGradient>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+
+                <View style={styles.socialSection}>
+                  <Text style={styles.sectionTitle}>Síguenos en redes</Text>
+                  <View style={styles.socialButtons}>
+                    <TouchableOpacity 
+                      style={[styles.socialButton, styles.facebookButton]}
+                      onPress={() => handleSocialMedia('facebook')}
+                      activeOpacity={0.7}
+                    >
+                      <Facebook size={40} color="#1877F2" fill="#1877F2" />
+                      <Text style={styles.socialText}>Facebook</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity 
+                      style={[styles.socialButton, styles.instagramButton]}
+                      onPress={() => handleSocialMedia('instagram')}
+                      activeOpacity={0.7}
+                    >
+                      <View style={styles.instagramIconContainer}>
+                        <Instagram size={40} color="#E4405F" />
+                      </View>
+                      <Text style={styles.socialText}>Instagram</Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              </View>
+            </>
+          ) : isRenovaPlus ? (
             <>
               <TouchableOpacity 
                 style={styles.accordionHeader}
@@ -570,6 +721,267 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     textAlign: 'center',
   },
+  medicinaNameOverlay: {
+    position: 'absolute',
+    bottom: 20,
+    left: 0,
+    right: 0,
+    alignItems: 'center',
+    paddingHorizontal: 20,
+  },
+  medicinaName: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: 'white',
+    backgroundColor: 'rgba(233, 30, 99, 0.95)',
+    paddingHorizontal: 20,
+    paddingVertical: 12,
+    borderRadius: 8,
+    overflow: 'hidden',
+    textAlign: 'center',
+    lineHeight: 26,
+  },
+  medicinaHeader: {
+    marginBottom: 20,
+  },
+  medicinaSubtitle: {
+    fontSize: 18,
+    fontWeight: '700' as const,
+    color: '#E91E63',
+    textAlign: 'center',
+    marginBottom: 12,
+    fontFamily: 'System',
+  },
+  medicinaSubtitle2: {
+    fontSize: 16,
+    fontWeight: '600' as const,
+    color: '#C2185B',
+    textAlign: 'center',
+    fontFamily: 'System',
+  },
+  medicinaContent: {
+    backgroundColor: 'white',
+    borderRadius: 16,
+    padding: 20,
+    marginBottom: 16,
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+  },
+  medicinaQuestion: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: '#E91E63',
+    marginBottom: 8,
+  },
+  medicinaText: {
+    fontSize: 16,
+    color: '#2c3e50',
+    lineHeight: 24,
+    marginBottom: 16,
+  },
+  medicinaSectionTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#2c3e50',
+    marginBottom: 12,
+    marginTop: 8,
+  },
+  medicinaList: {
+    marginBottom: 16,
+  },
+  medicinaListItem: {
+    fontSize: 16,
+    color: '#2c3e50',
+    lineHeight: 28,
+    paddingLeft: 8,
+  },
+  medicinaSolution: {
+    backgroundColor: '#FCE4EC',
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 16,
+  },
+  medicinaSolutionTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#C2185B',
+    marginBottom: 12,
+  },
+  medicinaEstheticSection: {
+    backgroundColor: '#F3E5F5',
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 16,
+  },
+  medicinaEstheticTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#7B1FA2',
+    marginBottom: 12,
+  },
+  medicinaTagline: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#E91E63',
+    textAlign: 'center',
+    marginTop: 12,
+    fontStyle: 'italic' as const,
+  },
+  doctorCard: {
+    backgroundColor: '#FFF3E0',
+    borderRadius: 16,
+    padding: 20,
+    marginBottom: 20,
+    borderWidth: 3,
+    borderColor: '#E91E63',
+    elevation: 4,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 8,
+  },
+  doctorImage: {
+    width: '100%',
+    height: 250,
+    borderRadius: 12,
+    marginBottom: 16,
+    resizeMode: 'cover',
+  },
+  doctorInfo: {
+    alignItems: 'center',
+  },
+  doctorName: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#C2185B',
+    textAlign: 'center',
+    marginBottom: 8,
+  },
+  doctorTitle: {
+    fontSize: 16,
+    color: '#2c3e50',
+    textAlign: 'center',
+    marginBottom: 12,
+    lineHeight: 22,
+  },
+  doctorSchedule: {
+    fontSize: 16,
+    color: '#2c3e50',
+    textAlign: 'center',
+    marginBottom: 8,
+  },
+  doctorConsulta: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#E91E63',
+    textAlign: 'center',
+  },
+  offerCard: {
+    backgroundColor: '#E91E63',
+    borderRadius: 16,
+    overflow: 'hidden',
+    marginBottom: 20,
+    elevation: 4,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 8,
+  },
+  offerImage: {
+    width: '100%',
+    height: 200,
+    resizeMode: 'cover',
+  },
+  offerContent: {
+    padding: 20,
+    alignItems: 'center',
+  },
+  offerTitle: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: 'white',
+    textAlign: 'center',
+    marginBottom: 8,
+  },
+  offerSubtitle: {
+    fontSize: 18,
+    color: 'white',
+    textAlign: 'center',
+    marginBottom: 8,
+  },
+  offerPrice: {
+    fontSize: 36,
+    fontWeight: 'bold',
+    color: '#FFD700',
+    textAlign: 'center',
+  },
+  contactSection: {
+    backgroundColor: 'white',
+    borderRadius: 16,
+    padding: 20,
+    marginBottom: 16,
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+  },
+  addressText: {
+    fontSize: 16,
+    color: '#2c3e50',
+    lineHeight: 24,
+    marginBottom: 16,
+    textAlign: 'center',
+  },
+  contactButtons: {
+    gap: 12,
+  },
+  contactButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 14,
+    backgroundColor: 'white',
+    borderRadius: 12,
+    borderWidth: 2,
+    borderColor: '#E91E63',
+    gap: 8,
+  },
+  contactButtonText: {
+    fontSize: 16,
+    fontWeight: '600' as const,
+    color: '#E91E63',
+  },
+  emailIcon: {
+    fontSize: 24,
+  },
+  whatsappButtonMedicina: {
+    borderRadius: 12,
+    overflow: 'hidden',
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+  },
   playOverlay: {
     ...StyleSheet.absoluteFillObject,
     justifyContent: 'center',
@@ -671,7 +1083,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 4,
   },
-
   socialText: {
     fontSize: 16,
     fontWeight: '600',

@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 8,
     left: 8,
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    backgroundColor: 'white',
     borderRadius: 12,
     minWidth: 24,
     height: 24,
@@ -197,7 +197,7 @@ const styles = StyleSheet.create({
   countText: {
     fontSize: 14,
     fontWeight: '700' as const,
-    color: '#FFD700',
+    color: '#000000',
     fontFamily: 'monospace',
   },
 });
