@@ -175,7 +175,7 @@ export default function BusinessScreen() {
                   <View style={styles.offerContent}>
                     <Text style={styles.offerTitle}>Rejuvenecimiento Full Face</Text>
                     <Text style={styles.offerSubtitle}>¡Aprovecha nuestra Oferta:</Text>
-                    <Text style={styles.offerPrice}>S/ 999.00</Text>
+                    <Text style={styles.offerPrice}>S/ 999.00!</Text>
                   </View>
                 </View>
 
@@ -191,7 +191,11 @@ export default function BusinessScreen() {
                       style={styles.galleryImage} 
                     />
                     <Image 
-                      source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/ptp2wa7t1a3i2vy00ab4h' }} 
+                      source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/b1l18y358huzuq5f63uy2' }} 
+                      style={styles.galleryImage} 
+                    />
+                    <Image 
+                      source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/zbq89qkf9qu7uq8tp8xgc' }} 
                       style={styles.galleryImage} 
                     />
                   </ScrollView>
@@ -209,7 +213,7 @@ export default function BusinessScreen() {
                     
                     <TouchableOpacity style={styles.contactButton} onPress={handleEmail}>
                       <Text style={styles.emailIcon}>📧</Text>
-                      <Text style={styles.contactButtonText}>mashaburga@yahoo.com</Text>
+                      <Text style={styles.contactButtonText}>Email</Text>
                     </TouchableOpacity>
                     
                     <TouchableOpacity style={styles.whatsappButtonMedicina} onPress={handleWhatsApp}>
@@ -217,36 +221,14 @@ export default function BusinessScreen() {
                         colors={['#25D366', '#128C7E']}
                         style={styles.buttonGradient}
                       >
-                        <Phone size={20} color="white" />
-                        <Text style={styles.buttonText}>Solicitar Cita por WhatsApp</Text>
+                        <Text style={styles.whatsappIcon}>💬</Text>
+                        <Text style={styles.buttonText}>Solicitar Cita</Text>
                       </LinearGradient>
                     </TouchableOpacity>
                   </View>
                 </View>
 
-                <View style={styles.socialSection}>
-                  <Text style={styles.sectionTitle}>Síguenos en redes</Text>
-                  <View style={styles.socialButtons}>
-                    <TouchableOpacity 
-                      style={[styles.socialButton, styles.facebookButton]}
-                      onPress={() => handleSocialMedia('facebook')}
-                      activeOpacity={0.7}
-                    >
-                      <Facebook size={40} color="#1877F2" fill="#1877F2" />
-                      <Text style={styles.socialText}>Facebook</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity 
-                      style={[styles.socialButton, styles.instagramButton]}
-                      onPress={() => handleSocialMedia('instagram')}
-                      activeOpacity={0.7}
-                    >
-                      <View style={styles.instagramIconContainer}>
-                        <Instagram size={40} color="#E4405F" />
-                      </View>
-                      <Text style={styles.socialText}>Instagram</Text>
-                    </TouchableOpacity>
-                  </View>
-                </View>
+
               </View>
             </>
           ) : isRenovaPlus ? (
@@ -923,7 +905,7 @@ const styles = StyleSheet.create({
   },
   offerPrice: {
     fontSize: 36,
-    fontWeight: 'bold',
+    fontWeight: 'bold' as const,
     color: '#FFD700',
     textAlign: 'center',
   },
@@ -1092,5 +1074,8 @@ const styles = StyleSheet.create({
   socialHandle: {
     fontSize: 14,
     color: '#7f8c8d',
+  },
+  whatsappIcon: {
+    fontSize: 20,
   },
 });
