@@ -24,6 +24,7 @@ export default function BusinessScreen() {
   const isMedicinaRegenerativa = params.id === '12';
   const isGasLaBala = params.id === '19';
   const isElectricGas = params.id === '20';
+  const isImprentaShopper = params.id === '21';
   const videoRef = React.useRef<Video>(null);
 
   const handleCall = () => {
@@ -86,7 +87,7 @@ export default function BusinessScreen() {
       <Stack.Screen 
         options={{ 
           title: params.name || 'Negocio',
-          headerStyle: { backgroundColor: isMedicinaRegenerativa ? '#E91E63' : isGasLaBala ? '#FF6B35' : isElectricGas ? '#1976D2' : '#667eea' },
+          headerStyle: { backgroundColor: isMedicinaRegenerativa ? '#E91E63' : isGasLaBala ? '#FF6B35' : isElectricGas ? '#1976D2' : isImprentaShopper ? '#039BE5' : '#667eea' },
           headerTintColor: 'white',
           headerTitleStyle: { fontWeight: 'bold' },
           headerRight: () => (
@@ -121,6 +122,8 @@ export default function BusinessScreen() {
           <Image source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/oaohlh6q9sd3n3o41ymsz' }} style={styles.gasHeroImage} />
         ) : isElectricGas ? (
           <Image source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/pg9hzfbgggq0eji3klur4' }} style={styles.electricGasHeroImage} />
+        ) : isImprentaShopper ? (
+          <Image source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/a08xmljl78hiqhstkft7c' }} style={styles.imprentaHeroImage} />
         ) : (
           <Image source={{ uri: params.image }} style={styles.heroImage} />
         )}
@@ -525,6 +528,63 @@ export default function BusinessScreen() {
                       <Text style={styles.buttonTextCentered}>WhatsApp</Text>
                     </LinearGradient>
                   </TouchableOpacity>
+                </View>
+              </View>
+            </>
+          ) : isImprentaShopper ? (
+            <>
+              <View style={styles.imprentaContent}>
+                <Text style={styles.imprentaTitle}>LA IMPRENTA DEL SHOPPER</Text>
+                
+                <View style={styles.imprentaDescriptionCard}>
+                  <Text style={styles.imprentaDescription}>
+                    🎨 Todo lo que imaginas en papel, cartón o cartulina, ¡lo hacemos realidad!
+                  </Text>
+                </View>
+
+                <View style={styles.imprentaServicesSection}>
+                  <Text style={styles.imprentaServicesTitle}>📄 Nuestros Servicios:</Text>
+                  <Text style={styles.imprentaServicesText}>
+                    Afiches, volantes, folders, revistas, brochures, tarjetas personales y comerciales, autoadhesivos y mucho más.
+                  </Text>
+                </View>
+
+                <View style={styles.imprentaFeaturesSection}>
+                  <Text style={styles.imprentaFeatureItem}>💡 Impresiones a full color</Text>
+                  <Text style={styles.imprentaFeatureItem}>✂️ Troquelados</Text>
+                  <Text style={styles.imprentaFeatureItem}>📎 Encolados</Text>
+                  <Text style={styles.imprentaFeatureItem}>✨ Acabados profesionales</Text>
+                </View>
+
+                <View style={styles.imprentaDeliveryCard}>
+                  <Text style={styles.imprentaDeliveryTitle}>🚚 Servicio rápido y económico en toda Lima Metropolitana</Text>
+                </View>
+
+                <View style={styles.imprentaGallerySection}>
+                  <Text style={styles.sectionTitle}>Galería de Trabajos</Text>
+                  <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.gallery}>
+                    <Image 
+                      source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/zkhgqidyrkslr8n1cbaog' }} 
+                      style={styles.galleryImage} 
+                    />
+                    <Image 
+                      source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/q88k8hw8yw9v24zviyavf' }} 
+                      style={styles.galleryImage} 
+                    />
+                    <Image 
+                      source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/ugs4sumoih1ns2v1hsonh' }} 
+                      style={styles.galleryImage} 
+                    />
+                    <Image 
+                      source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/xiodf3l82zcnvtrjgxlyi' }} 
+                      style={styles.galleryImage} 
+                    />
+                  </ScrollView>
+                </View>
+
+                <View style={styles.imprentaCtaSection}>
+                  <Text style={styles.imprentaCtaTitle}>📞 Solicite su presupuesto sin compromiso</Text>
+                  <Text style={styles.imprentaCtaSubtitle}>📍 La imprenta de El Shopper, calidad en cada impresión.</Text>
                 </View>
               </View>
             </>
@@ -1536,5 +1596,123 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.1,
     shadowRadius: 8,
+  },
+  imprentaHeroImage: {
+    width: '100%',
+    height: 250,
+    resizeMode: 'cover',
+    backgroundColor: 'white',
+  },
+  imprentaContent: {
+    backgroundColor: 'white',
+    borderRadius: 16,
+    padding: 20,
+    marginBottom: 16,
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+  },
+  imprentaTitle: {
+    fontSize: 26,
+    fontWeight: 'bold' as const,
+    color: '#039BE5',
+    textAlign: 'center',
+    marginBottom: 20,
+    letterSpacing: 1,
+  },
+  imprentaDescriptionCard: {
+    backgroundColor: '#E1F5FE',
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 20,
+    borderWidth: 2,
+    borderColor: '#039BE5',
+  },
+  imprentaDescription: {
+    fontSize: 18,
+    color: '#01579B',
+    textAlign: 'center',
+    lineHeight: 26,
+    fontWeight: '600' as const,
+  },
+  imprentaServicesSection: {
+    backgroundColor: '#FFF3E0',
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 20,
+    borderWidth: 2,
+    borderColor: '#FF9800',
+  },
+  imprentaServicesTitle: {
+    fontSize: 20,
+    fontWeight: 'bold' as const,
+    color: '#E65100',
+    marginBottom: 12,
+    textAlign: 'center',
+  },
+  imprentaServicesText: {
+    fontSize: 16,
+    color: '#2c3e50',
+    lineHeight: 24,
+    textAlign: 'center',
+  },
+  imprentaFeaturesSection: {
+    backgroundColor: '#F3E5F5',
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 20,
+    borderWidth: 2,
+    borderColor: '#9C27B0',
+  },
+  imprentaFeatureItem: {
+    fontSize: 17,
+    color: '#4A148C',
+    lineHeight: 32,
+    fontWeight: '600' as const,
+    textAlign: 'center',
+  },
+  imprentaDeliveryCard: {
+    backgroundColor: '#C8E6C9',
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 20,
+    borderWidth: 2,
+    borderColor: '#4CAF50',
+  },
+  imprentaDeliveryTitle: {
+    fontSize: 18,
+    fontWeight: 'bold' as const,
+    color: '#1B5E20',
+    textAlign: 'center',
+    lineHeight: 26,
+  },
+  imprentaGallerySection: {
+    marginBottom: 20,
+  },
+  imprentaCtaSection: {
+    backgroundColor: '#FFEBEE',
+    borderRadius: 12,
+    padding: 20,
+    borderWidth: 2,
+    borderColor: '#F44336',
+  },
+  imprentaCtaTitle: {
+    fontSize: 20,
+    fontWeight: 'bold' as const,
+    color: '#C62828',
+    textAlign: 'center',
+    marginBottom: 12,
+  },
+  imprentaCtaSubtitle: {
+    fontSize: 18,
+    fontWeight: '600' as const,
+    color: '#D32F2F',
+    textAlign: 'center',
+    fontStyle: 'italic' as const,
   },
 });

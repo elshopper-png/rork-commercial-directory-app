@@ -65,6 +65,18 @@ const mockBusinesses: Record<string, Business[]> = {
       hours: 'Pedidos por WhatsApp',
       image: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/i3gdkrzhkuynayvqymm7y'
     }
+  ],
+  marketing: [
+    {
+      id: '21',
+      name: 'La Imprenta del Shopper',
+      description: 'Todo lo que imaginas en papel, cartón o cartulina',
+      rating: 0,
+      address: 'Lima Metropolitana',
+      phone: '',
+      hours: 'Servicio rápido y económico',
+      image: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/a08xmljl78hiqhstkft7c'
+    }
   ]
 };
 

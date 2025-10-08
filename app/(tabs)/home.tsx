@@ -35,7 +35,7 @@ const categories = [
   { id: 'home-services', name: 'Hogar & Servicios', icon: Home, color: '#009688' as const, count: 1 },
   { id: 'it-repair', name: 'Informática & Reparación', icon: Laptop, color: '#5C6BC0' as const, count: 0 },
   { id: 'legal-services', name: 'Legal', icon: Calculator, color: '#6D4C41' as const, count: 0 },
-  { id: 'marketing', name: 'Marketing & Imprenta', icon: Megaphone, color: '#039BE5' as const, count: 0 },
+  { id: 'marketing', name: 'Publicidad & Imprenta', icon: Megaphone, color: '#039BE5' as const, count: 1 },
   { id: 'fashion', name: 'Moda & Joyería', icon: Shirt, color: '#E91E63' as const, count: 0 },
   { id: 'furniture', name: 'Muebles & Decoración', icon: Armchair, color: '#7E57C2' as const, count: 0 },
   { id: 'nutrition', name: 'Nutrición & Bienestar', icon: Pill, color: '#4CAF50' as const, count: 1 },
