@@ -41,6 +41,8 @@ export default function BusinessScreen() {
         ? encodeURIComponent('Hola, quiero hacer un pedido de gas')
         : isElectricGas
         ? encodeURIComponent('Hola, necesito servicio técnico')
+        : isImprentaShopper
+        ? encodeURIComponent('Hola, requiero de sus servicios de imprenta')
         : encodeURIComponent('Hola, quiero información sobre Renova Plus');
       Linking.openURL(`https://wa.me/${params.phone.replace(/[^0-9]/g, '')}?text=${message}`);
     }
@@ -582,9 +584,42 @@ export default function BusinessScreen() {
                   </ScrollView>
                 </View>
 
+                <View style={styles.imprentaVideoSection}>
+                  <Text style={styles.sectionTitle}>Video Promocional</Text>
+                  <TouchableOpacity 
+                    style={styles.imprentaVideoContainer}
+                    onPress={handleVideoPress}
+                    activeOpacity={0.8}
+                  >
+                    <Video
+                      source={{ uri: 'https://drive.google.com/uc?export=download&id=1HyZjQwE2Q9EjaBNz299Ej2YrKXfz5uNy' }}
+                      style={styles.imprentaVideo}
+                      useNativeControls={false}
+                      resizeMode={ResizeMode.COVER}
+                      isLooping
+                      shouldPlay={false}
+                    />
+                    <View style={styles.playOverlay}>
+                      <View style={styles.playButton}>
+                        <Text style={styles.playIconImprenta}>▶</Text>
+                      </View>
+                    </View>
+                  </TouchableOpacity>
+                </View>
+
                 <View style={styles.imprentaCtaSection}>
                   <Text style={styles.imprentaCtaTitle}>📞 Solicite su presupuesto sin compromiso</Text>
                   <Text style={styles.imprentaCtaSubtitle}>📍 La imprenta de El Shopper, calidad en cada impresión.</Text>
+                  
+                  <TouchableOpacity style={styles.imprentaWhatsappButton} onPress={handleWhatsApp}>
+                    <LinearGradient
+                      colors={['#25D366', '#128C7E']}
+                      style={styles.buttonGradient}
+                    >
+                      <Text style={styles.whatsappIcon}>💬</Text>
+                      <Text style={styles.buttonTextCentered}>WhatsApp</Text>
+                    </LinearGradient>
+                  </TouchableOpacity>
                 </View>
               </View>
             </>
@@ -666,7 +701,9 @@ export default function BusinessScreen() {
           </TouchableOpacity>
           <Video
             ref={videoRef}
-            source={{ uri: 'https://drive.google.com/uc?export=download&id=1fdP7F5Kpd5BM29MylmK_uTr-mJQJQedg' }}
+            source={{ uri: isImprentaShopper 
+              ? 'https://drive.google.com/uc?export=download&id=1HyZjQwE2Q9EjaBNz299Ej2YrKXfz5uNy'
+              : 'https://drive.google.com/uc?export=download&id=1fdP7F5Kpd5BM29MylmK_uTr-mJQJQedg' }}
             style={styles.fullscreenVideo}
             useNativeControls
             resizeMode={ResizeMode.CONTAIN}
@@ -1714,5 +1751,41 @@ const styles = StyleSheet.create({
     color: '#D32F2F',
     textAlign: 'center',
     fontStyle: 'italic' as const,
+    marginBottom: 20,
+  },
+  imprentaVideoSection: {
+    marginBottom: 20,
+  },
+  imprentaVideoContainer: {
+    backgroundColor: '#000',
+    borderRadius: 12,
+    overflow: 'hidden',
+    alignItems: 'center',
+    justifyContent: 'center',
+    aspectRatio: 9 / 16,
+    width: '50%',
+    maxWidth: 250,
+    alignSelf: 'center',
+  },
+  imprentaVideo: {
+    width: '100%',
+    height: '100%',
+  },
+  playIconImprenta: {
+    fontSize: 30,
+    color: '#039BE5',
+    marginLeft: 5,
+  },
+  imprentaWhatsappButton: {
+    borderRadius: 12,
+    overflow: 'hidden',
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
   },
 });
