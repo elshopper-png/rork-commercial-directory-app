@@ -47,7 +47,8 @@ export default function BusinessScreen() {
         : isElCaseritoRegalon
         ? encodeURIComponent('Hola, quiero hacer un pedido de gas')
         : encodeURIComponent('Hola, quiero información sobre Renova Plus');
-      Linking.openURL(`https://wa.me/${params.phone.replace(/[^0-9]/g, '')}?text=${message}`);
+      const phoneNumber = params.phone.replace(/[^0-9]/g, '');
+      Linking.openURL(`https://wa.me/${phoneNumber}?text=${message}`);
     }
   };
 
@@ -130,7 +131,7 @@ export default function BusinessScreen() {
         ) : isImprentaShopper ? (
           <Image source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/a08xmljl78hiqhstkft7c' }} style={styles.imprentaHeroImage} />
         ) : isElCaseritoRegalon ? (
-          <Image source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/1x4khhgpbg1q78kbw4stx' }} style={styles.caseritoHeroImage} />
+          <Image source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/wmcfm587ip5lj5ic7nx13' }} style={styles.caseritoHeroImage} />
         ) : (
           <Image source={{ uri: params.image }} style={styles.heroImage} />
         )}
@@ -633,11 +634,11 @@ export default function BusinessScreen() {
               <View style={styles.caseritoContent}>
                 <View style={styles.caseritoMainSection}>
                   <Image 
-                    source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/g0clgg1bktjelo1t3vbcz' }} 
+                    source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/0z8hz1ff5bg4bc3xsjh1k' }} 
                     style={styles.caseritoBallonesImage}
                     resizeMode="contain"
                   />
-                  <Text style={styles.caseritoSlogan}>¡Siempre con el peso exacto!</Text>
+                  <Text style={styles.caseritoSlogan}>Siempre con el peso exacto</Text>
                 </View>
 
                 <View style={styles.caseritoAuthSection}>
@@ -656,9 +657,18 @@ export default function BusinessScreen() {
 
                 <View style={styles.caseritoPhonesSection}>
                   <Text style={styles.caseritoPhonesTitle}>📞 Pedidos:</Text>
-                  <Text style={styles.caseritoPhoneNumber}>015337134</Text>
-                  <Text style={styles.caseritoPhoneNumber}>013876443</Text>
-                  <Text style={styles.caseritoPhoneNumber}>013890434</Text>
+                  <TouchableOpacity style={styles.caseritoPhoneButton} onPress={() => Linking.openURL('tel:015337134')}>
+                    <Phone size={24} color="#E65100" />
+                    <Text style={styles.caseritoPhoneButtonText}>015337134</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={styles.caseritoPhoneButton} onPress={() => Linking.openURL('tel:013876443')}>
+                    <Phone size={24} color="#E65100" />
+                    <Text style={styles.caseritoPhoneButtonText}>013876443</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={styles.caseritoPhoneButton} onPress={() => Linking.openURL('tel:013890434')}>
+                    <Phone size={24} color="#E65100" />
+                    <Text style={styles.caseritoPhoneButtonText}>013890434</Text>
+                  </TouchableOpacity>
                 </View>
 
                 <View style={styles.caseritoWhatsappSection}>
@@ -703,7 +713,7 @@ export default function BusinessScreen() {
 
                 <View style={styles.caseritoDeliverySection}>
                   <Image 
-                    source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/t0wxzg3okc645x4zhy71g' }} 
+                    source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/kpj10tgo9sh1p18ohnlfj' }} 
                     style={styles.caseritoDeliveryImage}
                     resizeMode="contain"
                   />
@@ -1861,7 +1871,7 @@ const styles = StyleSheet.create({
   },
   playIconImprenta: {
     fontSize: 30,
-    color: '#039BE5',
+    color: '#FF0000',
     marginLeft: 5,
   },
   imprentaWhatsappButton: {
@@ -1956,19 +1966,30 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     borderWidth: 2,
     borderColor: '#FF9800',
-    alignItems: 'center',
   },
   caseritoPhonesTitle: {
     fontSize: 20,
     fontWeight: 'bold' as const,
     color: '#E65100',
     marginBottom: 12,
+    textAlign: 'center',
   },
-  caseritoPhoneNumber: {
+  caseritoPhoneButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 14,
+    backgroundColor: 'white',
+    borderRadius: 12,
+    borderWidth: 2,
+    borderColor: '#FF9800',
+    gap: 8,
+    marginBottom: 10,
+  },
+  caseritoPhoneButtonText: {
     fontSize: 18,
     fontWeight: '600' as const,
-    color: '#2c3e50',
-    marginBottom: 8,
+    color: '#E65100',
     fontFamily: 'monospace',
   },
   caseritoWhatsappSection: {
