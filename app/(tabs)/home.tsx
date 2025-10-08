@@ -32,7 +32,7 @@ const categories = [
   { id: 'education', name: 'Educación & Cursos', icon: GraduationCap, color: '#1976D2' as const, count: 0 },
   { id: 'jobs', name: 'Empleos', icon: Briefcase, color: '#8E24AA' as const, count: 0 },
   { id: 'fitness', name: 'Fitness & Deportes', icon: Dumbbell, color: '#43A047' as const, count: 0 },
-  { id: 'home-services', name: 'Hogar & Servicios', icon: Home, color: '#009688' as const, count: 1 },
+  { id: 'home-services', name: 'Hogar & Servicios', icon: Home, color: '#009688' as const, count: 2 },
   { id: 'it-repair', name: 'Informática & Reparación', icon: Laptop, color: '#5C6BC0' as const, count: 0 },
   { id: 'legal-services', name: 'Legal', icon: Calculator, color: '#6D4C41' as const, count: 0 },
   { id: 'marketing', name: 'Publicidad & Imprenta', icon: Megaphone, color: '#039BE5' as const, count: 1 },

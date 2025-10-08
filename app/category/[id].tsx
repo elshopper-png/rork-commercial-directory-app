@@ -27,6 +27,16 @@ const mockBusinesses: Record<string, Business[]> = {
       phone: '942604451',
       hours: 'Lunes a domingo (incluido feriados) de 6:30 am. a 10 pm.',
       image: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/oaohlh6q9sd3n3o41ymsz'
+    },
+    {
+      id: '22',
+      name: 'El Caserito Regalón',
+      description: '¡Siempre con el peso exacto! Venta de gas autorizado por Osinergmin.',
+      rating: 0,
+      address: 'Los Olivos',
+      phone: '+51979743597',
+      hours: 'Lunes a domingo y feriados de 6 am. a 10 pm.',
+      image: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/1x4khhgpbg1q78kbw4stx'
     }
   ],
   'technical-service': [
@@ -73,7 +83,7 @@ const mockBusinesses: Record<string, Business[]> = {
       description: 'Todo lo que imaginas en papel, cartón o cartulina',
       rating: 0,
       address: 'Lima Metropolitana',
-      phone: '',
+      phone: '+51993490886',
       hours: 'Servicio rápido y económico',
       image: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/a08xmljl78hiqhstkft7c'
     }

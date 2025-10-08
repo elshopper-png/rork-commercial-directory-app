@@ -25,6 +25,7 @@ export default function BusinessScreen() {
   const isGasLaBala = params.id === '19';
   const isElectricGas = params.id === '20';
   const isImprentaShopper = params.id === '21';
+  const isElCaseritoRegalon = params.id === '22';
   const videoRef = React.useRef<Video>(null);
 
   const handleCall = () => {
@@ -43,6 +44,8 @@ export default function BusinessScreen() {
         ? encodeURIComponent('Hola, necesito servicio técnico')
         : isImprentaShopper
         ? encodeURIComponent('Hola, requiero de sus servicios de imprenta')
+        : isElCaseritoRegalon
+        ? encodeURIComponent('Hola, quiero hacer un pedido de gas')
         : encodeURIComponent('Hola, quiero información sobre Renova Plus');
       Linking.openURL(`https://wa.me/${params.phone.replace(/[^0-9]/g, '')}?text=${message}`);
     }
@@ -89,7 +92,7 @@ export default function BusinessScreen() {
       <Stack.Screen 
         options={{ 
           title: params.name || 'Negocio',
-          headerStyle: { backgroundColor: isMedicinaRegenerativa ? '#E91E63' : isGasLaBala ? '#FF6B35' : isElectricGas ? '#1976D2' : isImprentaShopper ? '#039BE5' : '#667eea' },
+          headerStyle: { backgroundColor: isMedicinaRegenerativa ? '#E91E63' : isGasLaBala ? '#FF6B35' : isElectricGas ? '#1976D2' : isImprentaShopper ? '#039BE5' : isElCaseritoRegalon ? '#FFC107' : '#667eea' },
           headerTintColor: 'white',
           headerTitleStyle: { fontWeight: 'bold' },
           headerRight: () => (
@@ -126,6 +129,8 @@ export default function BusinessScreen() {
           <Image source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/pg9hzfbgggq0eji3klur4' }} style={styles.electricGasHeroImage} />
         ) : isImprentaShopper ? (
           <Image source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/a08xmljl78hiqhstkft7c' }} style={styles.imprentaHeroImage} />
+        ) : isElCaseritoRegalon ? (
+          <Image source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/1x4khhgpbg1q78kbw4stx' }} style={styles.caseritoHeroImage} />
         ) : (
           <Image source={{ uri: params.image }} style={styles.heroImage} />
         )}
@@ -620,6 +625,89 @@ export default function BusinessScreen() {
                       <Text style={styles.buttonTextCentered}>WhatsApp</Text>
                     </LinearGradient>
                   </TouchableOpacity>
+                </View>
+              </View>
+            </>
+          ) : isElCaseritoRegalon ? (
+            <>
+              <View style={styles.caseritoContent}>
+                <View style={styles.caseritoMainSection}>
+                  <Image 
+                    source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/g0clgg1bktjelo1t3vbcz' }} 
+                    style={styles.caseritoBallonesImage}
+                    resizeMode="contain"
+                  />
+                  <Text style={styles.caseritoSlogan}>¡Siempre con el peso exacto!</Text>
+                </View>
+
+                <View style={styles.caseritoAuthSection}>
+                  <Text style={styles.caseritoAuthText}>Autorizado por:</Text>
+                  <Image 
+                    source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/9yjuipw45zw87zchd1pd1' }} 
+                    style={styles.osinergminLogo}
+                    resizeMode="contain"
+                  />
+                </View>
+
+                <View style={styles.caseritoInfoCard}>
+                  <Text style={styles.caseritoInfoTitle}>⏰ Horario de atención:</Text>
+                  <Text style={styles.caseritoInfoText}>Lunes a domingo y feriados{"\n"}de 6 am. a 10 pm.</Text>
+                </View>
+
+                <View style={styles.caseritoPhonesSection}>
+                  <Text style={styles.caseritoPhonesTitle}>📞 Pedidos:</Text>
+                  <Text style={styles.caseritoPhoneNumber}>015337134</Text>
+                  <Text style={styles.caseritoPhoneNumber}>013876443</Text>
+                  <Text style={styles.caseritoPhoneNumber}>013890434</Text>
+                </View>
+
+                <View style={styles.caseritoWhatsappSection}>
+                  <Text style={styles.caseritoWhatsappTitle}>WhatsApp:</Text>
+                  <TouchableOpacity style={styles.caseritoWhatsappButton} onPress={handleWhatsApp}>
+                    <LinearGradient
+                      colors={['#25D366', '#128C7E']}
+                      style={styles.buttonGradient}
+                    >
+                      <Text style={styles.whatsappIcon}>💬</Text>
+                      <Text style={styles.buttonText}>WhatsApp</Text>
+                    </LinearGradient>
+                  </TouchableOpacity>
+                  
+                  <TouchableOpacity style={styles.caseritoWhatsappButton} onPress={() => {
+                    Linking.openURL(`https://wa.me/51979549609?text=${encodeURIComponent('Hola, quiero hacer un pedido de gas')}`);
+                  }}>
+                    <LinearGradient
+                      colors={['#25D366', '#128C7E']}
+                      style={styles.buttonGradient}
+                    >
+                      <Text style={styles.whatsappIcon}>💬</Text>
+                      <Text style={styles.buttonText}>WhatsApp</Text>
+                    </LinearGradient>
+                  </TouchableOpacity>
+                </View>
+
+                <View style={styles.caseritoPaymentSection}>
+                  <View style={styles.paymentLogosRow}>
+                    <Image 
+                      source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/61jczzo33e303tk72b2jn' }} 
+                      style={styles.paymentLogo}
+                      resizeMode="contain"
+                    />
+                    <Image 
+                      source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/toc768huwicrbswfvcyu8' }} 
+                      style={styles.paymentLogo}
+                      resizeMode="contain"
+                    />
+                  </View>
+                </View>
+
+                <View style={styles.caseritoDeliverySection}>
+                  <Image 
+                    source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/t0wxzg3okc645x4zhy71g' }} 
+                    style={styles.caseritoDeliveryImage}
+                    resizeMode="contain"
+                  />
+                  <Text style={styles.caseritoDeliveryText}>DELIVERY SIN COSTO</Text>
                 </View>
               </View>
             </>
@@ -1787,5 +1875,150 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.1,
     shadowRadius: 8,
+  },
+  caseritoHeroImage: {
+    width: '100%',
+    height: 280,
+    resizeMode: 'contain',
+    backgroundColor: 'white',
+  },
+  caseritoContent: {
+    backgroundColor: 'white',
+    borderRadius: 16,
+    padding: 20,
+    marginBottom: 16,
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+  },
+  caseritoMainSection: {
+    alignItems: 'center',
+    marginBottom: 24,
+    paddingVertical: 16,
+    backgroundColor: '#FFF9E6',
+    borderRadius: 12,
+  },
+  caseritoBallonesImage: {
+    width: '100%',
+    height: 200,
+    marginBottom: 16,
+  },
+  caseritoSlogan: {
+    fontSize: 24,
+    fontWeight: 'bold' as const,
+    color: '#F57C00',
+    textAlign: 'center',
+    letterSpacing: 0.5,
+  },
+  caseritoAuthSection: {
+    alignItems: 'center',
+    marginBottom: 24,
+    paddingVertical: 16,
+    backgroundColor: '#f8f9fa',
+    borderRadius: 12,
+  },
+  caseritoAuthText: {
+    fontSize: 16,
+    fontWeight: '600' as const,
+    color: '#2c3e50',
+    marginBottom: 12,
+  },
+  caseritoInfoCard: {
+    backgroundColor: '#E3F2FD',
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 16,
+    borderWidth: 2,
+    borderColor: '#2196F3',
+  },
+  caseritoInfoTitle: {
+    fontSize: 18,
+    fontWeight: 'bold' as const,
+    color: '#1565C0',
+    marginBottom: 8,
+    textAlign: 'center',
+  },
+  caseritoInfoText: {
+    fontSize: 16,
+    color: '#2c3e50',
+    lineHeight: 24,
+    textAlign: 'center',
+  },
+  caseritoPhonesSection: {
+    backgroundColor: '#FFF3E0',
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 16,
+    borderWidth: 2,
+    borderColor: '#FF9800',
+    alignItems: 'center',
+  },
+  caseritoPhonesTitle: {
+    fontSize: 20,
+    fontWeight: 'bold' as const,
+    color: '#E65100',
+    marginBottom: 12,
+  },
+  caseritoPhoneNumber: {
+    fontSize: 18,
+    fontWeight: '600' as const,
+    color: '#2c3e50',
+    marginBottom: 8,
+    fontFamily: 'monospace',
+  },
+  caseritoWhatsappSection: {
+    marginBottom: 16,
+  },
+  caseritoWhatsappTitle: {
+    fontSize: 20,
+    fontWeight: 'bold' as const,
+    color: '#2c3e50',
+    marginBottom: 12,
+    textAlign: 'center',
+  },
+  caseritoWhatsappButton: {
+    borderRadius: 12,
+    overflow: 'hidden',
+    marginBottom: 12,
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+  },
+  caseritoPaymentSection: {
+    backgroundColor: '#F3E5F5',
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 16,
+    alignItems: 'center',
+  },
+  caseritoDeliverySection: {
+    alignItems: 'center',
+    backgroundColor: '#C8E6C9',
+    borderRadius: 16,
+    padding: 20,
+    borderWidth: 3,
+    borderColor: '#4CAF50',
+  },
+  caseritoDeliveryImage: {
+    width: 150,
+    height: 150,
+    marginBottom: 12,
+  },
+  caseritoDeliveryText: {
+    fontSize: 24,
+    fontWeight: 'bold' as const,
+    color: '#1B5E20',
+    textAlign: 'center',
+    letterSpacing: 1,
   },
 });
