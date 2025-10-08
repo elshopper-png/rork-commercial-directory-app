@@ -27,21 +27,21 @@ const cardWidth = (width - 60) / 2;
 
 const categories = [
   { id: 'beauty', name: 'Belleza & Spa', icon: Sparkles, color: '#EC407A' as const, count: 1 },
-  { id: 'food', name: 'Comida & Snacks', icon: UtensilsCrossed, color: '#F4511E' as const, count: 2 },
-  { id: 'legal', name: 'Contadores', icon: Calculator, color: '#6D4C41' as const, count: 1 },
-  { id: 'education', name: 'Educación & Cursos', icon: GraduationCap, color: '#1976D2' as const, count: 2 },
-  { id: 'jobs', name: 'Empleos', icon: Briefcase, color: '#8E24AA' as const, count: 1 },
-  { id: 'fitness', name: 'Fitness & Deportes', icon: Dumbbell, color: '#43A047' as const, count: 2 },
+  { id: 'food', name: 'Comida & Snacks', icon: UtensilsCrossed, color: '#F4511E' as const, count: 0 },
+  { id: 'legal', name: 'Contadores', icon: Calculator, color: '#6D4C41' as const, count: 0 },
+  { id: 'education', name: 'Educación & Cursos', icon: GraduationCap, color: '#1976D2' as const, count: 0 },
+  { id: 'jobs', name: 'Empleos', icon: Briefcase, color: '#8E24AA' as const, count: 0 },
+  { id: 'fitness', name: 'Fitness & Deportes', icon: Dumbbell, color: '#43A047' as const, count: 0 },
   { id: 'home-services', name: 'Hogar & Servicios', icon: Home, color: '#009688' as const, count: 1 },
-  { id: 'it-repair', name: 'Informática & Reparación', icon: Laptop, color: '#5C6BC0' as const, count: 1 },
-  { id: 'legal-services', name: 'Legal', icon: Calculator, color: '#6D4C41' as const, count: 1 },
-  { id: 'marketing', name: 'Marketing & Imprenta', icon: Megaphone, color: '#039BE5' as const, count: 1 },
+  { id: 'it-repair', name: 'Informática & Reparación', icon: Laptop, color: '#5C6BC0' as const, count: 0 },
+  { id: 'legal-services', name: 'Legal', icon: Calculator, color: '#6D4C41' as const, count: 0 },
+  { id: 'marketing', name: 'Marketing & Imprenta', icon: Megaphone, color: '#039BE5' as const, count: 0 },
   { id: 'fashion', name: 'Moda & Joyería', icon: Shirt, color: '#E91E63' as const, count: 0 },
-  { id: 'furniture', name: 'Muebles & Decoración', icon: Armchair, color: '#7E57C2' as const, count: 1 },
+  { id: 'furniture', name: 'Muebles & Decoración', icon: Armchair, color: '#7E57C2' as const, count: 0 },
   { id: 'nutrition', name: 'Nutrición & Bienestar', icon: Pill, color: '#4CAF50' as const, count: 1 },
-  { id: 'construction', name: 'Obras & Ferretería', icon: Hammer, color: '#F9A825' as const, count: 1 },
-  { id: 'health', name: 'Salud Integral', icon: Heart, color: '#0288D1' as const, count: 1 },
-  { id: 'technical-service', name: 'Servicio Técnico', icon: Wrench, color: '#9E9E9E' as const, count: 2 }
+  { id: 'construction', name: 'Obras & Ferretería', icon: Hammer, color: '#F9A825' as const, count: 0 },
+  { id: 'health', name: 'Salud Integral', icon: Heart, color: '#0288D1' as const, count: 0 },
+  { id: 'technical-service', name: 'Servicio Técnico', icon: Wrench, color: '#9E9E9E' as const, count: 1 }
 ];
 
 export default function HomeScreen() {
