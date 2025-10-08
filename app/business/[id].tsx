@@ -357,7 +357,7 @@ export default function BusinessScreen() {
                 <View style={styles.gasLogosSection}>
                   <View style={styles.gasLogosRow}>
                     <Image 
-                      source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/kbx3d0iw1pxj7cwm2d7db' }} 
+                      source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/8xv14jz12cqedf2eya8bj' }} 
                       style={styles.gasLogo}
                       resizeMode="contain"
                     />
@@ -377,7 +377,7 @@ export default function BusinessScreen() {
                 <View style={styles.gasAuthSection}>
                   <Text style={styles.gasAuthText}>Autorizado por</Text>
                   <Image 
-                    source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/rxurd7a4tbw4uzfjs6lq7' }} 
+                    source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/9yjuipw45zw87zchd1pd1' }} 
                     style={styles.osinergminLogo}
                     resizeMode="contain"
                   />
@@ -401,12 +401,12 @@ export default function BusinessScreen() {
                   <Text style={styles.gasPaymentTitle}>Aceptamos:</Text>
                   <View style={styles.paymentLogosRow}>
                     <Image 
-                      source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/t0fwsj17q51ie1s229y51' }} 
+                      source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Yape_text_app_icon.png/240px-Yape_text_app_icon.png' }} 
                       style={styles.paymentLogo}
                       resizeMode="contain"
                     />
                     <Image 
-                      source={{ uri: 'https://images.unsplash.com/photo-1614680376593-902f74cf0d41?w=200&h=200&fit=crop' }} 
+                      source={{ uri: 'https://seeklogo.com/images/P/plin-logo-969BEDA17C-seeklogo.com.png' }} 
                       style={styles.paymentLogo}
                       resizeMode="contain"
                     />
@@ -421,19 +421,19 @@ export default function BusinessScreen() {
                       style={styles.buttonGradient}
                     >
                       <Text style={styles.whatsappIcon}>💬</Text>
-                      <Text style={styles.buttonText}>WhatsApp: {params.phone}</Text>
+                      <Text style={styles.buttonText}>WhatsApp</Text>
                     </LinearGradient>
                   </TouchableOpacity>
                   
                   <TouchableOpacity style={styles.gasPhoneButton} onPress={handleCall}>
                     <Phone size={24} color="#FF6B35" />
-                    <Text style={styles.gasPhoneText}>Teléfono: {params.phone}</Text>
+                    <Text style={styles.gasPhoneText}>Teléfono</Text>
                   </TouchableOpacity>
                 </View>
 
                 <View style={styles.gasDeliverySection}>
                   <Image 
-                    source={{ uri: 'https://images.unsplash.com/photo-1526367790999-0150786686a2?w=600&h=300&fit=crop' }} 
+                    source={{ uri: 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=800&h=400&fit=crop' }} 
                     style={styles.deliveryImage}
                     resizeMode="cover"
                   />
@@ -1317,7 +1317,7 @@ const styles = StyleSheet.create({
   },
   deliveryImage: {
     width: '100%',
-    height: 150,
+    height: 200,
   },
   deliveryOverlay: {
     ...StyleSheet.absoluteFillObject,
