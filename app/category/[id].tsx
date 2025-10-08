@@ -83,6 +83,16 @@ const mockBusinesses: Record<string, Business[]> = {
       phone: '987-567-890',
       hours: 'Lun-Vie: 9:00 AM - 7:00 PM',
       image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=400&h=300&fit=crop'
+    },
+    {
+      id: '20',
+      name: 'Electric-Gas',
+      description: 'Servicio técnico garantizado de Línea Blanca',
+      rating: 0,
+      address: 'Las Agatas 1376, Cooperativa Cajabamba, al lado de Cooperativa Angélica Gamarra, Los Olivos',
+      phone: '993982439',
+      hours: 'Trabajos en taller y a domicilio',
+      image: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/0gkngioxo91omvl8in308'
     }
   ],
   'it-repair': [

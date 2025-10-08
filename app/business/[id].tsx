@@ -23,6 +23,7 @@ export default function BusinessScreen() {
   const isRenovaPlus = params.id === '18';
   const isMedicinaRegenerativa = params.id === '12';
   const isGasLaBala = params.id === '19';
+  const isElectricGas = params.id === '20';
   const videoRef = React.useRef<Video>(null);
 
   const handleCall = () => {
@@ -37,6 +38,8 @@ export default function BusinessScreen() {
         ? encodeURIComponent('Hola, quiero solicitar una cita')
         : isGasLaBala
         ? encodeURIComponent('Hola, quiero hacer un pedido de gas')
+        : isElectricGas
+        ? encodeURIComponent('Hola, necesito servicio técnico')
         : encodeURIComponent('Hola, quiero información sobre Renova Plus');
       Linking.openURL(`https://wa.me/${params.phone.replace(/[^0-9]/g, '')}?text=${message}`);
     }
@@ -56,6 +59,8 @@ export default function BusinessScreen() {
   const handleDirections = () => {
     if (isMedicinaRegenerativa) {
       Linking.openURL('https://www.google.com/maps/place/Av.+Santiago+Antunez+de+Mayolo+848,+Los+Olivos+15301/@-11.9924519,-77.0719698,17.25z/data=!4m6!3m5!1s0x9105ce5963606bd1:0x44f4712ae588f03c!8m2!3d-11.9926661!4d-77.0716667!16s%2Fg%2F11q2ng_sww?entry=ttu&g_ep=EgoyMDI1MTAwNC4wIKXMDSoASAFQAw%3D%3D');
+    } else if (isElectricGas) {
+      Linking.openURL('https://www.google.com/maps/place/Hechizos+de+Octubre/@-11.9895621,-77.0754011,15.5z/data=!4m6!3m5!1s0x9105cf5509996a3d:0x8d74df9ccac2eecf!8m2!3d-11.989835!4d-77.0790562!16s%2Fg%2F11qn09kswr?entry=ttu&g_ep=EgoyMDI1MTAwNi4wIKXMDSoASAFQAw%3D%3D');
     } else if (params.address) {
       const encodedAddress = encodeURIComponent(params.address);
       Linking.openURL(`https://maps.google.com/?q=${encodedAddress}`);
@@ -81,7 +86,7 @@ export default function BusinessScreen() {
       <Stack.Screen 
         options={{ 
           title: params.name || 'Negocio',
-          headerStyle: { backgroundColor: isMedicinaRegenerativa ? '#E91E63' : isGasLaBala ? '#FF6B35' : '#667eea' },
+          headerStyle: { backgroundColor: isMedicinaRegenerativa ? '#E91E63' : isGasLaBala ? '#FF6B35' : isElectricGas ? '#1976D2' : '#667eea' },
           headerTintColor: 'white',
           headerTitleStyle: { fontWeight: 'bold' },
           headerRight: () => (
@@ -114,6 +119,8 @@ export default function BusinessScreen() {
           </View>
         ) : isGasLaBala ? (
           <Image source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/oaohlh6q9sd3n3o41ymsz' }} style={styles.gasHeroImage} />
+        ) : isElectricGas ? (
+          <Image source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/0gkngioxo91omvl8in308' }} style={styles.electricGasHeroImage} />
         ) : (
           <Image source={{ uri: params.image }} style={styles.heroImage} />
         )}
@@ -437,6 +444,87 @@ export default function BusinessScreen() {
                     style={styles.deliveryImage}
                     resizeMode="cover"
                   />
+                </View>
+              </View>
+            </>
+          ) : isElectricGas ? (
+            <>
+              <View style={styles.electricGasContent}>
+                <Text style={styles.electricGasTitle}>Servicio técnico garantizado de Línea Blanca</Text>
+                
+                <View style={styles.electricGasTechnicianCard}>
+                  <Text style={styles.electricGasTechnicianName}>César Caipo Sánchez – Técnico</Text>
+                  <Text style={styles.electricGasSubtitle}>Trabajos en taller y a domicilio</Text>
+                </View>
+
+                <View style={styles.electricGasServicesSection}>
+                  <Text style={styles.electricGasServicesTitle}>Reparación y mantenimiento de:</Text>
+                  <View style={styles.electricGasServicesList}>
+                    <Text style={styles.electricGasServiceItem}>🔧 Lavadoras</Text>
+                    <Text style={styles.electricGasServiceItem}>🔧 Secadoras</Text>
+                    <Text style={styles.electricGasServiceItem}>🔧 Refrigeradoras</Text>
+                    <Text style={styles.electricGasServiceItem}>🔧 Microondas</Text>
+                    <Text style={styles.electricGasServiceItem}>🔧 Cocinas de todas las marcas</Text>
+                  </View>
+                  <Text style={styles.electricGasGuarantee}>✅ Trabajo garantizado</Text>
+                </View>
+
+                <View style={styles.electricGasGallerySection}>
+                  <Text style={styles.sectionTitle}>Galería de Servicios</Text>
+                  <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.gallery}>
+                    <Image 
+                      source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/jjnmz0pqnavvypchulbd0' }} 
+                      style={styles.galleryImage} 
+                    />
+                    <Image 
+                      source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/snhgms4b4xwwaym0rarac' }} 
+                      style={styles.galleryImage} 
+                    />
+                    <Image 
+                      source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/mwol4ywm74k7cxbz283zm' }} 
+                      style={styles.galleryImage} 
+                    />
+                    <Image 
+                      source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/2v3cew0sfdc7x8jwxn3uc' }} 
+                      style={styles.galleryImage} 
+                    />
+                  </ScrollView>
+                </View>
+
+                <View style={styles.electricGasLocationSection}>
+                  <Text style={styles.sectionTitle}>📍 Ubicación</Text>
+                  <Text style={styles.electricGasAddress}>Las Agatas 1376, Cooperativa Cajabamba,{"\n"}al lado de Cooperativa Angélica Gamarra, Los Olivos</Text>
+                  
+                  <TouchableOpacity style={styles.electricGasMapButton} onPress={handleDirections}>
+                    <MapPin size={24} color="#1976D2" />
+                    <Text style={styles.electricGasMapButtonText}>Ver en Google Maps</Text>
+                  </TouchableOpacity>
+                </View>
+
+                <View style={styles.electricGasContactSection}>
+                  <Text style={styles.sectionTitle}>📞 Contacto</Text>
+                  
+                  <TouchableOpacity style={styles.electricGasWhatsappButton} onPress={handleWhatsApp}>
+                    <LinearGradient
+                      colors={['#25D366', '#128C7E']}
+                      style={styles.buttonGradient}
+                    >
+                      <Text style={styles.whatsappIcon}>💬</Text>
+                      <Text style={styles.buttonText}>WhatsApp: 993982439</Text>
+                    </LinearGradient>
+                  </TouchableOpacity>
+                  
+                  <TouchableOpacity style={styles.electricGasWhatsappButton} onPress={() => {
+                    Linking.openURL(`https://wa.me/963037342?text=${encodeURIComponent('Hola, necesito servicio técnico')}`);
+                  }}>
+                    <LinearGradient
+                      colors={['#25D366', '#128C7E']}
+                      style={styles.buttonGradient}
+                    >
+                      <Text style={styles.whatsappIcon}>💬</Text>
+                      <Text style={styles.buttonText}>WhatsApp: 963037342</Text>
+                    </LinearGradient>
+                  </TouchableOpacity>
                 </View>
               </View>
             </>
@@ -1314,5 +1402,133 @@ const styles = StyleSheet.create({
   deliveryImage: {
     width: '100%',
     height: 250,
+  },
+  electricGasHeroImage: {
+    width: '100%',
+    height: 220,
+    resizeMode: 'contain',
+    backgroundColor: 'white',
+  },
+  electricGasContent: {
+    backgroundColor: 'white',
+    borderRadius: 16,
+    padding: 20,
+    marginBottom: 16,
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+  },
+  electricGasTitle: {
+    fontSize: 22,
+    fontWeight: 'bold' as const,
+    color: '#1976D2',
+    textAlign: 'center',
+    marginBottom: 20,
+    lineHeight: 28,
+  },
+  electricGasTechnicianCard: {
+    backgroundColor: '#E3F2FD',
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 20,
+    borderWidth: 2,
+    borderColor: '#1976D2',
+  },
+  electricGasTechnicianName: {
+    fontSize: 18,
+    fontWeight: 'bold' as const,
+    color: '#0D47A1',
+    textAlign: 'center',
+    marginBottom: 8,
+  },
+  electricGasSubtitle: {
+    fontSize: 16,
+    fontWeight: '600' as const,
+    color: '#1976D2',
+    textAlign: 'center',
+  },
+  electricGasServicesSection: {
+    backgroundColor: '#FFF3E0',
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 20,
+    borderWidth: 2,
+    borderColor: '#FF9800',
+  },
+  electricGasServicesTitle: {
+    fontSize: 18,
+    fontWeight: 'bold' as const,
+    color: '#E65100',
+    marginBottom: 12,
+    textAlign: 'center',
+  },
+  electricGasServicesList: {
+    marginBottom: 16,
+  },
+  electricGasServiceItem: {
+    fontSize: 16,
+    color: '#2c3e50',
+    lineHeight: 32,
+    paddingLeft: 8,
+  },
+  electricGasGuarantee: {
+    fontSize: 18,
+    fontWeight: 'bold' as const,
+    color: '#4CAF50',
+    textAlign: 'center',
+    marginTop: 8,
+  },
+  electricGasGallerySection: {
+    marginBottom: 20,
+  },
+  electricGasLocationSection: {
+    backgroundColor: '#F5F5F5',
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 20,
+  },
+  electricGasAddress: {
+    fontSize: 16,
+    color: '#2c3e50',
+    lineHeight: 24,
+    marginBottom: 16,
+    textAlign: 'center',
+  },
+  electricGasMapButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 14,
+    backgroundColor: 'white',
+    borderRadius: 12,
+    borderWidth: 2,
+    borderColor: '#1976D2',
+    gap: 8,
+  },
+  electricGasMapButtonText: {
+    fontSize: 16,
+    fontWeight: '600' as const,
+    color: '#1976D2',
+  },
+  electricGasContactSection: {
+    marginBottom: 16,
+  },
+  electricGasWhatsappButton: {
+    borderRadius: 12,
+    overflow: 'hidden',
+    marginBottom: 12,
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
   },
 });

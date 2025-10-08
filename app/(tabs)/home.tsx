@@ -41,7 +41,7 @@ const categories = [
   { id: 'nutrition', name: 'Nutrición & Bienestar', icon: Pill, color: '#4CAF50' as const, count: 1 },
   { id: 'construction', name: 'Obras & Ferretería', icon: Hammer, color: '#F9A825' as const, count: 1 },
   { id: 'health', name: 'Salud Integral', icon: Heart, color: '#0288D1' as const, count: 1 },
-  { id: 'technical-service', name: 'Servicio Técnico', icon: Wrench, color: '#9E9E9E' as const, count: 1 }
+  { id: 'technical-service', name: 'Servicio Técnico', icon: Wrench, color: '#9E9E9E' as const, count: 2 }
 ];
 
 export default function HomeScreen() {
