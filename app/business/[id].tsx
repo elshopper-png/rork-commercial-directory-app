@@ -113,7 +113,7 @@ export default function BusinessScreen() {
             </View>
           </View>
         ) : isGasLaBala ? (
-          <Image source={{ uri: params.image }} style={styles.gasHeroImage} />
+          <Image source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/oaohlh6q9sd3n3o41ymsz' }} style={styles.gasHeroImage} />
         ) : (
           <Image source={{ uri: params.image }} style={styles.heroImage} />
         )}
@@ -357,7 +357,7 @@ export default function BusinessScreen() {
                 <View style={styles.gasLogosSection}>
                   <View style={styles.gasLogosRow}>
                     <Image 
-                      source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/8xv14jz12cqedf2eya8bj' }} 
+                      source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/qiljg70fhp105svc725nm' }} 
                       style={styles.gasLogo}
                       resizeMode="contain"
                     />
@@ -367,7 +367,7 @@ export default function BusinessScreen() {
                       resizeMode="contain"
                     />
                     <Image 
-                      source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/6nkg3m5qdbkbh8sdy0xdd' }} 
+                      source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/6xkeillb7mxovuvnmrwng' }} 
                       style={styles.gasLogo}
                       resizeMode="contain"
                     />
@@ -398,7 +398,7 @@ export default function BusinessScreen() {
                 </View>
 
                 <View style={styles.gasPaymentSection}>
-                  <Text style={styles.gasPaymentTitle}>Aceptamos:</Text>
+                  <Text style={styles.gasPaymentTitle}>Aceptamos</Text>
                   <View style={styles.paymentLogosRow}>
                     <Image 
                       source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Yape_text_app_icon.png/240px-Yape_text_app_icon.png' }} 
@@ -433,13 +433,10 @@ export default function BusinessScreen() {
 
                 <View style={styles.gasDeliverySection}>
                   <Image 
-                    source={{ uri: 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=800&h=400&fit=crop' }} 
+                    source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/t0wxzg3okc645x4zhy71g' }} 
                     style={styles.deliveryImage}
                     resizeMode="cover"
                   />
-                  <View style={styles.deliveryOverlay}>
-                    <Text style={styles.deliveryText}>DELIVERY GRATIS</Text>
-                  </View>
                 </View>
               </View>
             </>
@@ -1196,8 +1193,8 @@ const styles = StyleSheet.create({
     gap: 16,
   },
   gasLogo: {
-    width: 100,
-    height: 80,
+    width: 90,
+    height: 90,
   },
   gasAuthSection: {
     alignItems: 'center',
@@ -1259,8 +1256,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   paymentLogo: {
-    width: 80,
-    height: 80,
+    width: 70,
+    height: 70,
   },
   gasContactSection: {
     marginBottom: 16,
@@ -1302,7 +1299,6 @@ const styles = StyleSheet.create({
     color: '#FF6B35',
   },
   gasDeliverySection: {
-    position: 'relative',
     borderRadius: 16,
     overflow: 'hidden',
     marginTop: 8,
@@ -1317,22 +1313,6 @@ const styles = StyleSheet.create({
   },
   deliveryImage: {
     width: '100%',
-    height: 200,
-  },
-  deliveryOverlay: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(255, 107, 53, 0.9)',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  deliveryText: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    color: 'white',
-    textAlign: 'center',
-    letterSpacing: 2,
-    textShadowColor: 'rgba(0, 0, 0, 0.3)',
-    textShadowOffset: { width: 2, height: 2 },
-    textShadowRadius: 4,
+    height: 250,
   },
 });

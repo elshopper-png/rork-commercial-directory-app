@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Image } from 'react-native';
 import { Stack, useLocalSearchParams, router } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Star, MapPin, Clock } from 'lucide-react-native';
+
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 interface Business {
@@ -270,40 +270,22 @@ export default function CategoryScreen() {
         </LinearGradient>
 
         <View style={styles.content}>
-          {businesses.map((business) => (
-            <TouchableOpacity
-              key={business.id}
-              style={styles.businessCard}
-              onPress={() => handleBusinessPress(business)}
-              testID={`business-${business.id}`}
-            >
-              <Image source={{ uri: business.image }} style={styles.businessImage} />
-              
-              <View style={styles.businessInfo}>
-                <Text style={styles.businessName}>{business.name}</Text>
-                <Text style={styles.businessDescription}>{business.description}</Text>
-                
-                <View style={styles.businessDetails}>
-                  {business.rating > 0 && (
-                    <View style={styles.ratingContainer}>
-                      <Star size={16} color="#FFD700" fill="#FFD700" />
-                      <Text style={styles.rating}>{business.rating}</Text>
-                    </View>
-                  )}
-                  
-                  <View style={styles.detailItem}>
-                    <MapPin size={14} color="#666" />
-                    <Text style={styles.detailText}>{business.address}</Text>
-                  </View>
-                  
-                  <View style={styles.detailItem}>
-                    <Clock size={14} color="#666" />
-                    <Text style={styles.detailText}>{business.hours}</Text>
-                  </View>
+          <View style={styles.businessGrid}>
+            {businesses.map((business) => (
+              <TouchableOpacity
+                key={business.id}
+                style={styles.businessCard}
+                onPress={() => handleBusinessPress(business)}
+                testID={`business-${business.id}`}
+                activeOpacity={0.8}
+              >
+                <Image source={{ uri: business.image }} style={styles.businessImage} />
+                <View style={styles.businessOverlay}>
+                  <Text style={styles.businessName} numberOfLines={2}>{business.name}</Text>
                 </View>
-              </View>
-            </TouchableOpacity>
-          ))}
+              </TouchableOpacity>
+            ))}
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -335,12 +317,18 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   content: {
-    padding: 20,
+    padding: 16,
+  },
+  businessGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    gap: 12,
   },
   businessCard: {
+    width: '48%',
     backgroundColor: 'white',
-    borderRadius: 16,
-    marginBottom: 16,
+    borderRadius: 12,
     overflow: 'hidden',
     elevation: 3,
     shadowColor: '#000',
@@ -348,49 +336,28 @@ const styles = StyleSheet.create({
       width: 0,
       height: 2,
     },
-    shadowOpacity: 0.1,
-    shadowRadius: 8,
+    shadowOpacity: 0.15,
+    shadowRadius: 6,
+    marginBottom: 12,
   },
   businessImage: {
     width: '100%',
-    height: 200,
+    height: 140,
     resizeMode: 'cover',
   },
-  businessInfo: {
-    padding: 16,
+  businessOverlay: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.75)',
+    padding: 12,
   },
   businessName: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#2c3e50',
-    marginBottom: 4,
-  },
-  businessDescription: {
-    fontSize: 16,
-    color: '#7f8c8d',
-    marginBottom: 12,
-  },
-  businessDetails: {
-    gap: 8,
-  },
-  ratingContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 4,
-  },
-  rating: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#2c3e50',
-  },
-  detailItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  detailText: {
     fontSize: 14,
-    color: '#666',
-    flex: 1,
+    fontWeight: 'bold',
+    color: 'white',
+    textAlign: 'center',
+    lineHeight: 18,
   },
 });
