@@ -401,12 +401,12 @@ export default function BusinessScreen() {
                   <Text style={styles.gasPaymentTitle}>Aceptamos</Text>
                   <View style={styles.paymentLogosRow}>
                     <Image 
-                      source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Yape_text_app_icon.png/240px-Yape_text_app_icon.png' }} 
+                      source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/61jczzo33e303tk72b2jn' }} 
                       style={styles.paymentLogo}
                       resizeMode="contain"
                     />
                     <Image 
-                      source={{ uri: 'https://seeklogo.com/images/P/plin-logo-969BEDA17C-seeklogo.com.png' }} 
+                      source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/toc768huwicrbswfvcyu8' }} 
                       style={styles.paymentLogo}
                       resizeMode="contain"
                     />

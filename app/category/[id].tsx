@@ -70,7 +70,7 @@ const mockBusinesses: Record<string, Business[]> = {
       address: 'Los Olivos',
       phone: '942604451',
       hours: 'Lunes a domingo (incluido feriados) de 6:30 am. a 10 pm.',
-      image: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/p52sxq4ywnx9488hnyyda'
+      image: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/oaohlh6q9sd3n3o41ymsz'
     }
   ],
   'technical-service': [
