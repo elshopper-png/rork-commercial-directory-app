@@ -38,7 +38,7 @@ const mockBusinesses: Record<string, Business[]> = {
       address: 'Las Agatas 1376, Cooperativa Cajabamba, al lado de Cooperativa Angélica Gamarra, Los Olivos',
       phone: '993982439',
       hours: 'Trabajos en taller y a domicilio',
-      image: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/0gkngioxo91omvl8in308'
+      image: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/pg9hzfbgggq0eji3klur4'
     }
   ],
   beauty: [

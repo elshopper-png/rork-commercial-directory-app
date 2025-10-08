@@ -120,7 +120,7 @@ export default function BusinessScreen() {
         ) : isGasLaBala ? (
           <Image source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/oaohlh6q9sd3n3o41ymsz' }} style={styles.gasHeroImage} />
         ) : isElectricGas ? (
-          <Image source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/0gkngioxo91omvl8in308' }} style={styles.electricGasHeroImage} />
+          <Image source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/pg9hzfbgggq0eji3klur4' }} style={styles.electricGasHeroImage} />
         ) : (
           <Image source={{ uri: params.image }} style={styles.heroImage} />
         )}
@@ -234,7 +234,7 @@ export default function BusinessScreen() {
                         style={styles.buttonGradient}
                       >
                         <Text style={styles.whatsappIcon}>💬</Text>
-                        <Text style={styles.buttonText}>Solicitar Cita</Text>
+                        <Text style={styles.buttonTextCentered}>Solicitar Cita</Text>
                       </LinearGradient>
                     </TouchableOpacity>
                   </View>
@@ -330,8 +330,8 @@ export default function BusinessScreen() {
                         colors={['#25D366', '#128C7E']}
                         style={styles.buttonGradient}
                       >
-                        <Phone size={20} color="white" />
-                        <Text style={styles.buttonText}>📱 WhatsApp</Text>
+                        <Text style={styles.whatsappIcon}>💬</Text>
+                        <Text style={styles.buttonText}>WhatsApp</Text>
                       </LinearGradient>
                     </TouchableOpacity>
                   </View>
@@ -510,7 +510,7 @@ export default function BusinessScreen() {
                       style={styles.buttonGradient}
                     >
                       <Text style={styles.whatsappIcon}>💬</Text>
-                      <Text style={styles.buttonText}>WhatsApp: 993982439</Text>
+                      <Text style={styles.buttonTextCentered}>WhatsApp</Text>
                     </LinearGradient>
                   </TouchableOpacity>
                   
@@ -522,7 +522,7 @@ export default function BusinessScreen() {
                       style={styles.buttonGradient}
                     >
                       <Text style={styles.whatsappIcon}>💬</Text>
-                      <Text style={styles.buttonText}>WhatsApp: 963037342</Text>
+                      <Text style={styles.buttonTextCentered}>WhatsApp</Text>
                     </LinearGradient>
                   </TouchableOpacity>
                 </View>
@@ -745,6 +745,12 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '600',
     color: 'white',
+  },
+  buttonTextCentered: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: 'white',
+    textAlign: 'center' as const,
   },
   secondaryButton: {
     flexDirection: 'row',
