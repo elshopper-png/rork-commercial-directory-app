@@ -598,7 +598,7 @@ export default function BusinessScreen() {
                     activeOpacity={0.8}
                   >
                     <Video
-                      source={{ uri: 'https://drive.usercontent.google.com/download?id=1HyZjQwE2Q9EjaBNz299Ej2YrKXfz5uNy&export=download&authuser=0&confirm=t' }}
+                      source={{ uri: 'https://drive.usercontent.google.com/download?id=1HyZjQwE2Q9EjaBNz299Ej2YrKXfz5uNy&export=download&authuser=0&confirm=t&uuid=a1b2c3d4' }}
                       style={styles.imprentaVideo}
                       useNativeControls={false}
                       resizeMode={ResizeMode.COVER}
@@ -1357,7 +1357,7 @@ const styles = StyleSheet.create({
   },
   playIcon: {
     fontSize: 30,
-    color: '#4CAF50',
+    color: '#FF0000',
     marginLeft: 5,
   },
   fullscreenContainer: {
