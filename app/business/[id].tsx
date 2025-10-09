@@ -594,16 +594,12 @@ export default function BusinessScreen() {
                   <Text style={styles.sectionTitle}>Video Promocional</Text>
                   <TouchableOpacity 
                     style={styles.imprentaVideoContainer}
-                    onPress={handleVideoPress}
+                    onPress={() => Linking.openURL('https://youtu.be/3872aTWR500')}
                     activeOpacity={0.8}
                   >
-                    <Video
-                      source={{ uri: 'https://drive.usercontent.google.com/download?id=1HyZjQwE2Q9EjaBNz299Ej2YrKXfz5uNy&export=download&authuser=0&confirm=t&uuid=a1b2c3d4' }}
+                    <Image
+                      source={{ uri: 'https://img.youtube.com/vi/3872aTWR500/maxresdefault.jpg' }}
                       style={styles.imprentaVideo}
-                      useNativeControls={false}
-                      resizeMode={ResizeMode.COVER}
-                      isLooping
-                      shouldPlay={false}
                     />
                     <View style={styles.playOverlay}>
                       <View style={styles.playButton}>
@@ -797,17 +793,21 @@ export default function BusinessScreen() {
           >
             <Text style={styles.closeButtonText}>✕</Text>
           </TouchableOpacity>
-          <Video
-            ref={videoRef}
-            source={{ uri: isImprentaShopper 
-              ? 'https://drive.usercontent.google.com/download?id=1HyZjQwE2Q9EjaBNz299Ej2YrKXfz5uNy&export=download&authuser=0&confirm=t'
-              : 'https://drive.usercontent.google.com/download?id=1fdP7F5Kpd5BM29MylmK_uTr-mJQJQedg&export=download&authuser=0&confirm=t' }}
-            style={styles.fullscreenVideo}
-            useNativeControls
-            resizeMode={ResizeMode.CONTAIN}
-            isLooping
-            shouldPlay={true}
-          />
+          {isImprentaShopper ? (
+            <View style={styles.fullscreenVideo}>
+              <Text style={styles.youtubeMessage}>Abriendo video en YouTube...</Text>
+            </View>
+          ) : (
+            <Video
+              ref={videoRef}
+              source={{ uri: 'https://drive.usercontent.google.com/download?id=1fdP7F5Kpd5BM29MylmK_uTr-mJQJQedg&export=download&authuser=0&confirm=t' }}
+              style={styles.fullscreenVideo}
+              useNativeControls
+              resizeMode={ResizeMode.CONTAIN}
+              isLooping
+              shouldPlay={true}
+            />
+          )}
         </View>
       </Modal>
     </SafeAreaView>
@@ -2041,5 +2041,10 @@ const styles = StyleSheet.create({
     color: '#1B5E20',
     textAlign: 'center',
     letterSpacing: 1,
+  },
+  youtubeMessage: {
+    fontSize: 18,
+    color: 'white',
+    textAlign: 'center',
   },
 });
