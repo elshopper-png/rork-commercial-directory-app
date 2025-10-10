@@ -594,12 +594,16 @@ export default function BusinessScreen() {
                   <Text style={styles.sectionTitle}>Video Promocional</Text>
                   <TouchableOpacity 
                     style={styles.imprentaVideoContainer}
-                    onPress={() => Linking.openURL('https://youtu.be/3872aTWR500')}
+                    onPress={handleVideoPress}
                     activeOpacity={0.8}
                   >
-                    <Image
-                      source={{ uri: 'https://img.youtube.com/vi/3872aTWR500/maxresdefault.jpg' }}
+                    <Video
+                      source={{ uri: 'https://www.youtube.com/embed/3872aTWR500' }}
                       style={styles.imprentaVideo}
+                      useNativeControls={false}
+                      resizeMode={ResizeMode.CONTAIN}
+                      isLooping={false}
+                      shouldPlay={false}
                     />
                     <View style={styles.playOverlay}>
                       <View style={styles.playButton}>
@@ -793,21 +797,15 @@ export default function BusinessScreen() {
           >
             <Text style={styles.closeButtonText}>✕</Text>
           </TouchableOpacity>
-          {isImprentaShopper ? (
-            <View style={styles.fullscreenVideo}>
-              <Text style={styles.youtubeMessage}>Abriendo video en YouTube...</Text>
-            </View>
-          ) : (
-            <Video
-              ref={videoRef}
-              source={{ uri: 'https://drive.usercontent.google.com/download?id=1fdP7F5Kpd5BM29MylmK_uTr-mJQJQedg&export=download&authuser=0&confirm=t' }}
-              style={styles.fullscreenVideo}
-              useNativeControls
-              resizeMode={ResizeMode.CONTAIN}
-              isLooping
-              shouldPlay={true}
-            />
-          )}
+          <Video
+            ref={videoRef}
+            source={{ uri: isImprentaShopper ? 'https://www.youtube.com/embed/3872aTWR500' : 'https://drive.usercontent.google.com/download?id=1fdP7F5Kpd5BM29MylmK_uTr-mJQJQedg&export=download&authuser=0&confirm=t' }}
+            style={styles.fullscreenVideo}
+            useNativeControls
+            resizeMode={ResizeMode.CONTAIN}
+            isLooping={!isImprentaShopper}
+            shouldPlay={true}
+          />
         </View>
       </Modal>
     </SafeAreaView>
@@ -1860,9 +1858,8 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     alignItems: 'center',
     justifyContent: 'center',
-    aspectRatio: 9 / 16,
-    width: '50%',
-    maxWidth: 250,
+    aspectRatio: 16 / 9,
+    width: '100%',
     alignSelf: 'center',
   },
   imprentaVideo: {
