@@ -598,7 +598,7 @@ export default function BusinessScreen() {
                     activeOpacity={0.8}
                   >
                     <Video
-                      source={{ uri: 'https://drive.google.com/uc?export=download&id=1HyZjQwE2Q9EjaBNz299Ej2YrKXfz5uNy' }}
+                      source={{ uri: 'https://drive.google.com/uc?export=download&id=1W12YH0Co_VWhpT9Gnxo7JRgr9Gk0fzqs' }}
                       style={styles.imprentaVideo}
                       useNativeControls={false}
                       resizeMode={ResizeMode.CONTAIN}
@@ -799,7 +799,7 @@ export default function BusinessScreen() {
           </TouchableOpacity>
           <Video
             ref={videoRef}
-            source={{ uri: isImprentaShopper ? 'https://drive.google.com/uc?export=download&id=1HyZjQwE2Q9EjaBNz299Ej2YrKXfz5uNy' : 'https://drive.usercontent.google.com/download?id=1fdP7F5Kpd5BM29MylmK_uTr-mJQJQedg&export=download&authuser=0&confirm=t' }}
+            source={{ uri: isImprentaShopper ? 'https://drive.google.com/uc?export=download&id=1W12YH0Co_VWhpT9Gnxo7JRgr9Gk0fzqs' : 'https://drive.usercontent.google.com/download?id=1fdP7F5Kpd5BM29MylmK_uTr-mJQJQedg&export=download&authuser=0&confirm=t' }}
             style={styles.fullscreenVideo}
             useNativeControls
             resizeMode={ResizeMode.CONTAIN}
