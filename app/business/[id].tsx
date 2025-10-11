@@ -598,7 +598,7 @@ export default function BusinessScreen() {
                     activeOpacity={0.8}
                   >
                     <Video
-                      source={{ uri: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4' }}
+                      source={{ uri: 'https://youtu.be/3872aTWR500' }}
                       style={styles.imprentaVideo}
                       useNativeControls={false}
                       resizeMode={ResizeMode.COVER}
@@ -799,7 +799,7 @@ export default function BusinessScreen() {
           </TouchableOpacity>
           <Video
             ref={videoRef}
-            source={{ uri: isImprentaShopper ? 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4' : 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4' }}
+            source={{ uri: isImprentaShopper ? 'https://youtu.be/3872aTWR500' : 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4' }}
             style={styles.fullscreenVideo}
             useNativeControls
             resizeMode={ResizeMode.CONTAIN}
