@@ -301,7 +301,7 @@ export default function BusinessScreen() {
                       activeOpacity={0.8}
                     >
                       <Video
-                        source={{ uri: 'https://drive.google.com/uc?export=download&id=1fdP7F5Kpd5BM29MylmK_uTr-mJQJQedg' }}
+                        source={{ uri: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4' }}
                         style={styles.video}
                         useNativeControls={false}
                         resizeMode={ResizeMode.COVER}
@@ -598,10 +598,10 @@ export default function BusinessScreen() {
                     activeOpacity={0.8}
                   >
                     <Video
-                      source={{ uri: 'https://www.youtube.com/embed/3872aTWR500' }}
+                      source={{ uri: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4' }}
                       style={styles.imprentaVideo}
                       useNativeControls={false}
-                      resizeMode={ResizeMode.CONTAIN}
+                      resizeMode={ResizeMode.COVER}
                       isLooping={false}
                       shouldPlay={false}
                     />
@@ -799,7 +799,7 @@ export default function BusinessScreen() {
           </TouchableOpacity>
           <Video
             ref={videoRef}
-            source={{ uri: isImprentaShopper ? 'https://www.youtube.com/embed/3872aTWR500' : 'https://drive.usercontent.google.com/download?id=1fdP7F5Kpd5BM29MylmK_uTr-mJQJQedg&export=download&authuser=0&confirm=t' }}
+            source={{ uri: isImprentaShopper ? 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4' : 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4' }}
             style={styles.fullscreenVideo}
             useNativeControls
             resizeMode={ResizeMode.CONTAIN}
@@ -1039,8 +1039,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     aspectRatio: 9 / 16,
-    width: '25%',
-    maxWidth: 150,
+    width: '100%',
+    maxWidth: 300,
     alignSelf: 'center',
   },
   video: {
@@ -1858,8 +1858,9 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     alignItems: 'center',
     justifyContent: 'center',
-    aspectRatio: 16 / 9,
+    aspectRatio: 9 / 16,
     width: '100%',
+    maxWidth: 300,
     alignSelf: 'center',
   },
   imprentaVideo: {
