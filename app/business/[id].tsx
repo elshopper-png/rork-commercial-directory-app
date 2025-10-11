@@ -26,6 +26,7 @@ export default function BusinessScreen() {
   const isElectricGas = params.id === '20';
   const isImprentaShopper = params.id === '21';
   const isElCaseritoRegalon = params.id === '22';
+  const isDrSaulGarrido = params.id === '23';
   const videoRef = React.useRef<Video>(null);
 
   const handleCall = () => {
@@ -93,7 +94,7 @@ export default function BusinessScreen() {
       <Stack.Screen 
         options={{ 
           title: params.name || 'Negocio',
-          headerStyle: { backgroundColor: isMedicinaRegenerativa ? '#E91E63' : isGasLaBala ? '#FF6B35' : isElectricGas ? '#1976D2' : isImprentaShopper ? '#039BE5' : isElCaseritoRegalon ? '#FFC107' : '#667eea' },
+          headerStyle: { backgroundColor: isMedicinaRegenerativa ? '#E91E63' : isGasLaBala ? '#FF6B35' : isElectricGas ? '#1976D2' : isImprentaShopper ? '#039BE5' : isElCaseritoRegalon ? '#FFC107' : isDrSaulGarrido ? '#0288D1' : '#667eea' },
           headerTintColor: 'white',
           headerTitleStyle: { fontWeight: 'bold' },
           headerRight: () => (
@@ -132,6 +133,8 @@ export default function BusinessScreen() {
           <Image source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/a08xmljl78hiqhstkft7c' }} style={styles.imprentaHeroImage} />
         ) : isElCaseritoRegalon ? (
           <Image source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/wmcfm587ip5lj5ic7nx13' }} style={styles.caseritoHeroImage} />
+        ) : isDrSaulGarrido ? (
+          <Image source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/l3ddrhhzy34qo176m820x' }} style={styles.drGarridoHeroImage} />
         ) : (
           <Image source={{ uri: params.image }} style={styles.heroImage} />
         )}
@@ -301,7 +304,7 @@ export default function BusinessScreen() {
                       activeOpacity={0.8}
                     >
                       <Video
-                        source={{ uri: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4' }}
+                        source={{ uri: 'https://mega.nz/file/K8ZVVSSI#gZEhPdAh6eYEBjTb8Mmx3asJYaIQo7KH8vcmvvMgpXQ' }}
                         style={styles.video}
                         useNativeControls={false}
                         resizeMode={ResizeMode.COVER}
@@ -598,7 +601,7 @@ export default function BusinessScreen() {
                     activeOpacity={0.8}
                   >
                     <Video
-                      source={{ uri: 'https://youtu.be/3872aTWR500' }}
+                      source={{ uri: 'https://mega.nz/file/j84yjSLC#ZyWgSjl6pLv4jNCnx8BmEEoKfvlgMBMKF6m2dqZx_2o' }}
                       style={styles.imprentaVideo}
                       useNativeControls={false}
                       resizeMode={ResizeMode.COVER}
@@ -721,6 +724,105 @@ export default function BusinessScreen() {
                 </View>
               </View>
             </>
+          ) : isDrSaulGarrido ? (
+            <>
+              <View style={styles.drGarridoContent}>
+                <View style={styles.drGarridoBanner}>
+                  <Text style={styles.drGarridoBannerTitle}>Dr. Saúl Garrido</Text>
+                  <Text style={styles.drGarridoBannerSubtitle}>ATENCIÓN MÉDICA A DOMICILIO</Text>
+                </View>
+
+                <View style={styles.drGarridoProfileSection}>
+                  <Image 
+                    source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/gi8g7vq822groaxv7oh84' }} 
+                    style={styles.drGarridoPhoto}
+                  />
+                  <View style={styles.drGarridoInfo}>
+                    <Text style={styles.drGarridoDescription}>
+                      Médico graduado en la Universidad Cayetano Heredia, con 30 años de experiencia en clínicas privadas, Ministerio de Salud y EsSalud.
+                    </Text>
+                  </View>
+                </View>
+
+                <View style={styles.drGarridoContactCard}>
+                  <Text style={styles.drGarridoContactTitle}>📱 WhatsApp</Text>
+                  <TouchableOpacity style={styles.drGarridoWhatsappButton} onPress={handleWhatsApp}>
+                    <LinearGradient
+                      colors={['#25D366', '#128C7E']}
+                      style={styles.buttonGradient}
+                    >
+                      <Text style={styles.whatsappIcon}>💬</Text>
+                      <Text style={styles.buttonTextCentered}>+51 999 286 969</Text>
+                    </LinearGradient>
+                  </TouchableOpacity>
+                </View>
+
+                <View style={styles.drGarridoLocationCard}>
+                  <Text style={styles.drGarridoLocationTitle}>📍 Dirección</Text>
+                  <Text style={styles.drGarridoAddress}>Jr. Las Tunas 410, Urb. Naranjal, Independencia</Text>
+                  
+                  <TouchableOpacity style={styles.drGarridoMapButton} onPress={() => {
+                    Linking.openURL('https://www.google.com/maps/place/Dr.+Saul+Garrido/@-11.9869217,-77.0643981,16.5z/data=!4m9!1m2!2m1!1sJr.+Las+Tunas+410,+Urb.+Naranjal!3m5!1s0x9105cfe11cdedd33:0xd11a066051a07afd!8m2!3d-11.9855348!4d-77.063016!16s%2Fg%2F11ld8dswvv?entry=ttu&g_ep=EgoyMDI1MTAwOC4wIKXMDSoASAFQAw%3D%3D');
+                  }}>
+                    <MapPin size={24} color="#0288D1" />
+                    <Text style={styles.drGarridoMapButtonText}>Ver en Google Maps</Text>
+                  </TouchableOpacity>
+                </View>
+
+                <View style={styles.drGarridoFacadeSection}>
+                  <Text style={styles.sectionTitle}>Fachada del Consultorio</Text>
+                  <Image 
+                    source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/zqmwcn3b0qzz13nca49f5' }} 
+                    style={styles.drGarridoFacadeImage}
+                  />
+                </View>
+
+                <View style={styles.drGarridoGallerySection}>
+                  <Text style={styles.sectionTitle}>Galería</Text>
+                  <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.gallery}>
+                    <Image 
+                      source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/ifbab6d9dqffftjyddezw' }} 
+                      style={styles.galleryImage} 
+                    />
+                    <Image 
+                      source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/8dw1npiz2oe5jbobofrqb' }} 
+                      style={styles.galleryImage} 
+                    />
+                    <Image 
+                      source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/sbogppfube9m3sswss6zo' }} 
+                      style={styles.galleryImage} 
+                    />
+                    <Image 
+                      source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/b3gqfubfw7qxk3selvqrm' }} 
+                      style={styles.galleryImage} 
+                    />
+                  </ScrollView>
+                </View>
+
+                <View style={styles.drGarridoVideoSection}>
+                  <Text style={styles.sectionTitle}>Video Presentación</Text>
+                  <TouchableOpacity 
+                    style={styles.drGarridoVideoContainer}
+                    onPress={handleVideoPress}
+                    activeOpacity={0.8}
+                  >
+                    <Video
+                      source={{ uri: 'https://mega.nz/file/foBFUZaa#tmt91M0JagIvKS-fWNSm8N0VW7ISL7V4pYVMNtlVX-A' }}
+                      style={styles.drGarridoVideo}
+                      useNativeControls={false}
+                      resizeMode={ResizeMode.COVER}
+                      isLooping={false}
+                      shouldPlay={false}
+                    />
+                    <View style={styles.playOverlay}>
+                      <View style={styles.playButton}>
+                        <Text style={styles.playIcon}>▶</Text>
+                      </View>
+                    </View>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </>
           ) : (
             <>
               <View style={styles.businessHeader}>
@@ -799,11 +901,11 @@ export default function BusinessScreen() {
           </TouchableOpacity>
           <Video
             ref={videoRef}
-            source={{ uri: isImprentaShopper ? 'https://youtu.be/3872aTWR500' : 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4' }}
+            source={{ uri: isImprentaShopper ? 'https://mega.nz/file/j84yjSLC#ZyWgSjl6pLv4jNCnx8BmEEoKfvlgMBMKF6m2dqZx_2o' : isDrSaulGarrido ? 'https://mega.nz/file/foBFUZaa#tmt91M0JagIvKS-fWNSm8N0VW7ISL7V4pYVMNtlVX-A' : isRenovaPlus ? 'https://mega.nz/file/K8ZVVSSI#gZEhPdAh6eYEBjTb8Mmx3asJYaIQo7KH8vcmvvMgpXQ' : 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4' }}
             style={styles.fullscreenVideo}
             useNativeControls
             resizeMode={ResizeMode.CONTAIN}
-            isLooping={!isImprentaShopper}
+            isLooping={false}
             shouldPlay={true}
           />
         </View>
@@ -2044,5 +2146,165 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: 'white',
     textAlign: 'center',
+  },
+  drGarridoHeroImage: {
+    width: '100%',
+    height: 300,
+    resizeMode: 'cover' as const,
+  },
+  drGarridoContent: {
+    backgroundColor: 'white',
+    borderRadius: 16,
+    padding: 20,
+    marginBottom: 16,
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+  },
+  drGarridoBanner: {
+    backgroundColor: '#E1F5FE',
+    borderRadius: 12,
+    padding: 20,
+    marginBottom: 20,
+    borderWidth: 3,
+    borderColor: '#0288D1',
+    alignItems: 'center' as const,
+  },
+  drGarridoBannerTitle: {
+    fontSize: 28,
+    fontWeight: 'bold' as const,
+    color: '#01579B',
+    textAlign: 'center' as const,
+    marginBottom: 8,
+    letterSpacing: 1,
+  },
+  drGarridoBannerSubtitle: {
+    fontSize: 20,
+    fontWeight: '700' as const,
+    color: '#0277BD',
+    textAlign: 'center' as const,
+    letterSpacing: 0.5,
+  },
+  drGarridoProfileSection: {
+    backgroundColor: '#F5F5F5',
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 20,
+  },
+  drGarridoPhoto: {
+    width: '100%',
+    height: 300,
+    borderRadius: 12,
+    marginBottom: 16,
+    resizeMode: 'cover' as const,
+  },
+  drGarridoInfo: {
+    alignItems: 'center' as const,
+  },
+  drGarridoDescription: {
+    fontSize: 16,
+    color: '#2c3e50',
+    textAlign: 'center' as const,
+    lineHeight: 24,
+  },
+  drGarridoContactCard: {
+    backgroundColor: '#C8E6C9',
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 20,
+    borderWidth: 2,
+    borderColor: '#4CAF50',
+  },
+  drGarridoContactTitle: {
+    fontSize: 20,
+    fontWeight: 'bold' as const,
+    color: '#1B5E20',
+    marginBottom: 12,
+    textAlign: 'center' as const,
+  },
+  drGarridoWhatsappButton: {
+    borderRadius: 12,
+    overflow: 'hidden',
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+  },
+  drGarridoLocationCard: {
+    backgroundColor: '#FFF3E0',
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 20,
+    borderWidth: 2,
+    borderColor: '#FF9800',
+  },
+  drGarridoLocationTitle: {
+    fontSize: 20,
+    fontWeight: 'bold' as const,
+    color: '#E65100',
+    marginBottom: 12,
+    textAlign: 'center' as const,
+  },
+  drGarridoAddress: {
+    fontSize: 16,
+    color: '#2c3e50',
+    lineHeight: 24,
+    marginBottom: 16,
+    textAlign: 'center' as const,
+  },
+  drGarridoMapButton: {
+    flexDirection: 'row' as const,
+    alignItems: 'center' as const,
+    justifyContent: 'center' as const,
+    paddingVertical: 14,
+    backgroundColor: 'white',
+    borderRadius: 12,
+    borderWidth: 2,
+    borderColor: '#0288D1',
+    gap: 8,
+  },
+  drGarridoMapButtonText: {
+    fontSize: 16,
+    fontWeight: '600' as const,
+    color: '#0288D1',
+  },
+  drGarridoFacadeSection: {
+    marginBottom: 20,
+  },
+  drGarridoFacadeImage: {
+    width: '100%',
+    height: 250,
+    borderRadius: 12,
+    resizeMode: 'cover' as const,
+  },
+  drGarridoGallerySection: {
+    marginBottom: 20,
+  },
+  drGarridoVideoSection: {
+    marginBottom: 20,
+  },
+  drGarridoVideoContainer: {
+    backgroundColor: '#000',
+    borderRadius: 12,
+    overflow: 'hidden',
+    alignItems: 'center' as const,
+    justifyContent: 'center' as const,
+    aspectRatio: 9 / 16,
+    width: '100%',
+    maxWidth: 300,
+    alignSelf: 'center' as const,
+  },
+  drGarridoVideo: {
+    width: '100%',
+    height: '100%',
   },
 });

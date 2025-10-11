@@ -40,7 +40,7 @@ const categories = [
   { id: 'furniture', name: 'Muebles & Decoración', icon: Armchair, color: '#7E57C2' as const, count: 0 },
   { id: 'nutrition', name: 'Nutrición & Bienestar', icon: Pill, color: '#4CAF50' as const, count: 1 },
   { id: 'construction', name: 'Obras & Ferretería', icon: Hammer, color: '#F9A825' as const, count: 0 },
-  { id: 'health', name: 'Salud Integral', icon: Heart, color: '#0288D1' as const, count: 0 },
+  { id: 'health', name: 'Salud Integral', icon: Heart, color: '#0288D1' as const, count: 1 },
   { id: 'technical-service', name: 'Servicio Técnico', icon: Wrench, color: '#9E9E9E' as const, count: 1 }
 ];
 
@@ -125,12 +125,13 @@ const styles = StyleSheet.create({
     fontWeight: '900' as const,
     color: '#000000',
     textAlign: 'center',
-    letterSpacing: 0.5,
+    letterSpacing: 1.5,
     lineHeight: 38,
     fontFamily: 'System',
-    textShadowColor: 'rgba(153, 153, 153, 0.2)',
-    textShadowOffset: { width: 1, height: 1 },
-    textShadowRadius: 2,
+    textTransform: 'uppercase' as const,
+    textShadowColor: 'rgba(0, 0, 0, 0.3)',
+    textShadowOffset: { width: 2, height: 2 },
+    textShadowRadius: 3,
   },
   slogan: {
     fontSize: 18,

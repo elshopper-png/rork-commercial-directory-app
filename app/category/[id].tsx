@@ -87,6 +87,18 @@ const mockBusinesses: Record<string, Business[]> = {
       hours: 'Servicio rápido y económico',
       image: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/a08xmljl78hiqhstkft7c'
     }
+  ],
+  health: [
+    {
+      id: '23',
+      name: 'Dr. Saúl Garrido',
+      description: 'Atención Médica a Domicilio',
+      rating: 5.0,
+      address: 'Jr. Las Tunas 410, Urb. Naranjal, Independencia',
+      phone: '+51999286969',
+      hours: 'Médico graduado en la Universidad Cayetano Heredia, con 30 años de experiencia',
+      image: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/gi8g7vq822groaxv7oh84'
+    }
   ]
 };
 
